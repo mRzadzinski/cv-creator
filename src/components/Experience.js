@@ -8,7 +8,9 @@ export default class Experience  extends Component {
 	render() {
 		return(
       <div className='Experience'>
-        hello ObiWan
+		<div>
+			<div className='header'>Experience</div>
+		</div>
       </div>
     );
 	}

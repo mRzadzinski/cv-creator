@@ -1,0 +1,15 @@
+.ContactInfo {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+
+    min-height: 130px;
+    margin-bottom: 90px;
+	text-align: left;
+	font-size: 21px;
+    line-break: anywhere;
+}
+
+.contact-title {
+    width: 100px;
+}

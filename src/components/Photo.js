@@ -9,7 +9,7 @@ export default class Photo  extends Component {
 	render() {
 		return(
       <div className='Photo'>
-        <img id='avatar' src={obiWan} alt="ObiWan" srcset="" />
+        <img id='avatar' src={obiWan} alt="Avatar" />
       </div>
     );
 	}
