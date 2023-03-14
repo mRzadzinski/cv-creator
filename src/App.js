@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import obiWanInfo from './obi-wan-info';
 import Experience from './components/Experience';
 import PersonalInfo from './components/PersonalInfo';
 import Photo from './components/Photo';
@@ -10,6 +11,7 @@ import './styles/PersonalInfo/Name.scss';
 import './styles/PersonalInfo/Position.scss';
 import './styles/PersonalInfo/About.scss';
 import './styles/PersonalInfo/ContactInfo.scss';
+import './styles/Experience/Job.scss'
 
 
 class App extends Component {
@@ -20,8 +22,8 @@ class App extends Component {
 	render() {
 		return (
 			<div className='App'>
-				<Experience />
-				<PersonalInfo />
+				<Experience defaultData={obiWanInfo} />
+				<PersonalInfo defaultData={obiWanInfo} />
 				<Photo />
 			</div>
 		);

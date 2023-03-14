@@ -1,0 +1,30 @@
+.Job {
+    margin: 20px 0 20px 0;
+
+    font-size: 20px;
+}
+
+.job-info {
+    display: flex;
+    justify-content: space-between;
+
+    margin: 5px 0 5px 0;
+
+    .left {
+        max-width: 360px;
+    }
+
+    .right {
+        max-width: 145px;
+    }
+}
+
+.company {
+    font-size: 23px;
+    font-weight: 500;
+}
+
+.job-description{
+    margin-top: 12px;
+    font-size: 18px;
+}

@@ -4,7 +4,7 @@ const obiWanInfo = {
 	surname: 'Kenobi',
 	position: 'Senior Persuasion Specialist',
 	about:
-		"An international expert in the field of persuasion. Former head coach of Jedi Academy, where he conducted the top-ranked MBA course 'Mastering Influence and Persuasion'.",
+		"An international expert in the field of shadow work and persuasion. Former head coach of Jedi Academy, where he conducted the top-ranked MBA course 'Mastering Emotions and Force Persuasion'. Currently human rights activist.",
 	email: 'obi-wan.kenobi@gmail.com',
 	phone: '07987 654321',
 	street: '19 Dalgleish Cres',
@@ -13,12 +13,12 @@ const obiWanInfo = {
 	//Experience
 	jobs: [
 		{
-			company: 'Human Rights Without Frontiers International',
+			company: 'Human Rights Without Frontiers',
 			position: 'Diplomat',
-			location: 'Brussels, Belgium',
+			location: 'Brussels, BE',
 			period: '2015 - currently',
 			description:
-				'Publishing research, sharing information, organizing public events and speaking to political leaders on a particular human rights issues.',
+				'Publishing research, sharing information, organizing public events and speaking to political leaders about human rights issues.',
 		},
 		{
 			company: 'Jedi Academy',
@@ -26,17 +26,27 @@ const obiWanInfo = {
 			location: 'Dantooine',
 			period: '1973 - 2015',
 			description:
-				"Conducting the top-ranked MBA course 'Mastering Influence and Persuasion', that raised a new generation of emotionally intelligent Masters.",
+				"Conducting the top-ranked MBA course 'Mastering Emotions and Force Persuasion', that raised a new generation of emotionally intelligent Jedi.",
 		},
 		{
-			company: 'Atradius Collections',
+			company: 'Jabba Collections',
 			position: 'Debt Collector',
-			location: 'Worldwide',
+			location: 'Barrow, Alaska',
 			period: '1972-1973',
 			description:
-				'Encouraging forgetful people to regulate their liabilities. (Not a dream job, but paid the bills)',
+				'Encouraging forgetful customers to regulate their liabilities.',
 		},
 	],
+	education: {
+		company: 'Jedi Academy',
+		position: 'MBA Psychology & Mind Manipulation Course',
+		location: 'Coruscant',
+		period: '1967-1972',
+		description:
+			'',
+	},
+	skills: ['Mentoring', 'Lightsaber combat', 'Driving license (B cat.)', 'Problem solving', 'Telepathy'],
+	hobbies: 'Desert gazing, coaching intergalactic heroes, playing with my dog.',
 };
 
 export default obiWanInfo;

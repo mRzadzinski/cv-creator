@@ -1,15 +1,18 @@
 .Experience {
-    display: flex;
-    flex-direction: column;
+	display: flex;
+	flex-direction: column;
 
-    padding: 15px 35px 15px 35px;
+	padding: 15px 35px 15px 35px;
 
-    color: white;
-    font-size: 80px;
-    background-color: #9E938C;
-    text-shadow: 1px 1px 2px rgba(0, 0, 0, .6);
+	background-color: #9e938c;
 }
 
 .header {
-    font-size: 40px;
+	margin-top: 10px;
+	font-size: 39px;
+}
+
+.skill,
+.hobbies {
+	font-size: 20px;
 }
