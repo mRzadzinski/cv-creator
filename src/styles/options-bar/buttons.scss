@@ -1,0 +1,51 @@
+@import url('https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@500&display=swap');
+
+button {
+    font-size: 18px;
+}
+
+// Button style from 
+// https://getcssscan.com/css-buttons-examples
+.button-59 {
+  align-items: center;
+  background-color: #ebebed;
+  border: 2px solid #000;
+  box-sizing: border-box;
+  color: black;
+  cursor: pointer;
+  display: inline-flex;
+  fill: #000;
+  font-family: 'M PLUS Rounded 1c', sans-serif;
+  font-weight: 600;
+  height: 48px;
+  justify-content: center;
+  letter-spacing: -.8px;
+  line-height: 24px;
+  width: 80px;
+  outline: 0;
+  padding: 0 17px;
+  text-align: center;
+  text-decoration: none;
+  transition: all .15s;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+  border-radius: 15px;
+}
+
+$hover-color: rgb(0, 80, 199);
+.button-59:hover {
+  border-color: $hover-color;
+  color: $hover-color;
+  fill: $hover-color;
+}
+
+.erase-btn {
+    background-color: rgb(251, 140, 140);
+}
+
+.demo-btn {
+    margin-bottom: 110px;
+
+    background-color: rgb(131, 191, 251);
+}
