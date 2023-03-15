@@ -6,12 +6,14 @@ export default class Options extends Component {
 	}
 
 	render() {
+		const { eraseData, renderDemo } = this.props;
+
 		return (
 			<div className='Options'>
-				<button className='button-59 erase-btn'>ERASE</button>
-				<button className='button-59 demo-btn'>DEMO</button>
+				<button onClick={() => eraseData()} className='button-59 erase-btn'>ERASE</button>
+				<button onClick={() => renderDemo()} className='button-59 demo-btn'>DEMO</button>
 
-				<span class='material-symbols-outlined' id='magnifying-glass'>
+				<span className='material-symbols-outlined' id='magnifying-glass'>
 					zoom_in
 				</span>
 				<button className='button-59'>100%</button>

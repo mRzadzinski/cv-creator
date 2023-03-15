@@ -23,18 +23,22 @@ class App extends Component {
 		super(props);
 
 		this.state = {
-			// Mode 'demo' or 'user'
-			mode: 'demo',
 			userInfo: Object.assign({}, obiWanInfo),
 		};
+
+		this.eraseData = this.eraseData.bind(this);
+		this.renderDemo = this.renderDemo.bind(this);
 	}
 
-	eraseForm() {
-		const boilerplateCopy = Object.assign({}, dataBoilerplate);
-
+	renderDemo() {
 		this.setState({
-			mode: 'user',
-			userInfo: boilerplateCopy,
+			userInfo: Object.assign({}, obiWanInfo),
+		});
+	}
+
+	eraseData() {
+		this.setState({
+			userInfo: Object.assign({}, dataBoilerplate),
 		});
 	}
 
@@ -43,7 +47,7 @@ class App extends Component {
 
 		return (
 			<div className='App'>
-				<Options />
+				<Options eraseData={this.eraseData} renderDemo={this.renderDemo} />
 				<div className='cv'>
 					<Experience defaultData={userInfo} />
 					<PersonalInfo defaultData={userInfo} />
