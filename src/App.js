@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-import obiWanInfo from './personal-info/obi-wan-info';
-import infoBoilerplate from './personal-info/info-boilerplate';
+import obiWanInfo from './user-data/obi-wan-data';
+import dataBoilerplate from './user-data/data-boilerplate';
 import Experience from './components/Experience';
 import PersonalInfo from './components/PersonalInfo';
 import Options from './Options';
@@ -18,14 +18,24 @@ import './styles/Experience/Job.scss';
 import './styles/options-bar/buttons.scss';
 import './styles/options-bar/icons.scss';
 
-
 class App extends Component {
 	constructor(props) {
 		super(props);
 
 		this.state = {
-			userInfo: obiWanInfo,
+			// Mode 'demo' or 'user'
+			mode: 'demo',
+			userInfo: Object.assign({}, obiWanInfo),
 		};
+	}
+
+	eraseForm() {
+		const boilerplateCopy = Object.assign({}, dataBoilerplate);
+
+		this.setState({
+			mode: 'user',
+			userInfo: boilerplateCopy,
+		});
 	}
 
 	render() {

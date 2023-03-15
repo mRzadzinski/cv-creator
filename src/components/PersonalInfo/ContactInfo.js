@@ -9,6 +9,7 @@ export default class ContactInfo extends Component {
                 <div className="phone contact-data">mobile: {contactInfo.phone}</div>
                 <div className="street contact-data">{contactInfo.street}</div>
                 <div className="city contact-data">{contactInfo.city}</div>
+                <div className="country contact-data">{contactInfo.country}</div>
             </div>
         );
     }

@@ -1,4 +1,4 @@
-const infoBoilerplate = {
+const dataBoilerplate = {
 	// Personal info
 	name: '',
 	surname: '',
@@ -8,6 +8,7 @@ const infoBoilerplate = {
 	phone: '',
 	street: '',
 	city: '',
+	country: '',
 
 	//Experience
 	jobs: [
@@ -43,4 +44,4 @@ const infoBoilerplate = {
 	hobbies: '',
 };
 
-export default infoBoilerplate;
+export default dataBoilerplate;

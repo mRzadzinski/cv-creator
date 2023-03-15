@@ -9,30 +9,31 @@ const obiWanInfo = {
 	phone: '07987 654321',
 	street: '19 Dalgleish Cres',
 	city: 'Shrewsbury SY3 9FW',
+	country: 'United Kingdom',
 
 	//Experience
 	jobs: [
 		{
-			company: 'Human Rights Without Frontiers',
-			position: 'Diplomat',
-			location: 'Brussels, BE',
-			period: '2015 - currently',
-			description:
-				'Publishing research, sharing information, organizing public events and speaking to political leaders about human rights issues.',
-		},
-		{
 			company: 'Jedi Academy',
 			position: 'Force Persuasion Lecturer',
 			location: 'Dantooine',
-			period: '1973 - 2015',
+			period: '1992 - currently',
 			description:
 				"Conducting the top-ranked MBA course 'Mastering Emotions and Force Persuasion', that raised a new generation of emotionally intelligent Jedi.",
+		},
+		{
+			company: 'Human Rights Without Frontiers',
+			position: 'Diplomat',
+			location: 'Brussels, BE',
+			period: '1973 - 1992',
+			description:
+				'Publishing research, sharing information, organizing public events and speaking to political leaders about human rights issues.',
 		},
 		{
 			company: 'Jabba Collections',
 			position: 'Debt Collector',
 			location: 'Barrow, Alaska',
-			period: '1972-1973',
+			period: '1972 - 1973',
 			description:
 				'Encouraging forgetful customers to regulate their liabilities.',
 		},
@@ -41,7 +42,7 @@ const obiWanInfo = {
 		company: 'Jedi Academy',
 		position: 'MBA Psychology & Mind Manipulation Course',
 		location: 'Coruscant',
-		period: '1967-1972',
+		period: '1967 - 1972',
 		description:
 			'',
 	},
