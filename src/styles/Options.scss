@@ -1,0 +1,21 @@
+.Options {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    gap: 20px;
+    
+    position: absolute;
+    top: 32px;
+    left: 0px;
+    z-index: 2;
+  
+    width: 102px;
+    height: 530px;
+    padding-top: 47px;
+  
+    border: solid 2px rgba($color: #3B3530, $alpha: 1);
+    border-radius: 50px;
+    background-color: #C2B5AC;
+  
+    box-shadow: 0px 0px 44px 2px rgba(66, 68, 90, 1);
+  }

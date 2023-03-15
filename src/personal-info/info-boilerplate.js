@@ -1,4 +1,4 @@
-const userInfo = {
+const infoBoilerplate = {
 	// Personal info
 	name: '',
 	surname: '',
@@ -43,4 +43,4 @@ const userInfo = {
 	hobbies: '',
 };
 
-export default userInfo;
+export default infoBoilerplate;
