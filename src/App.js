@@ -16,7 +16,7 @@ import './styles/PersonalInfo/About.scss';
 import './styles/PersonalInfo/ContactInfo.scss';
 import './styles/Experience/Job.scss';
 import './styles/options-bar/buttons.scss';
-import './styles/options-bar/magnifying-glass.scss';
+import './styles/options-bar/icons.scss';
 
 
 class App extends Component {
