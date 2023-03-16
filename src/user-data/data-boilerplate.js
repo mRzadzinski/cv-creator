@@ -19,20 +19,6 @@ const dataBoilerplate = {
 			period: '',
 			description: '',
 		},
-		{
-			company: '',
-			position: '',
-			location: '',
-			period: '',
-			description: '',
-		},
-		{
-			company: '',
-			position: '',
-			location: '',
-			period: '',
-			description: '',
-		},
 	],
 	education: {
 		company: '',

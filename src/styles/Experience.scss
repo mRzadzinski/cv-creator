@@ -5,6 +5,10 @@
 	padding: 30px 35px 30px 35px;
 
 	background-color: #9e938c;
+
+	&:hover {
+        filter: brightness(.92);
+    }
 }
 
 .header {

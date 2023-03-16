@@ -3,6 +3,10 @@
 	border: solid 2px #3b3530;
 
 	text-align: center;
+
+	&:hover {
+        filter: brightness(.9);
+    }
 }
 
 #avatar {
