@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import Name from './PersonalInfo/Name';
-import Position from './PersonalInfo/Position';
+import JobTitle from './PersonalInfo/JobTitle';
 import About from './PersonalInfo/About';
 import ContactInfo from './PersonalInfo/ContactInfo';
 
@@ -10,16 +10,16 @@ export default class PersonalInfo extends Component {
 	}
 
 	render() {
-		const { defaultData } = this.props;
+		const { userData } = this.props;
 
 		return (
 			<div className='PersonalInfo'>
-				<div>
-					<Name defaultName={defaultData} />
-					<Position defaultPosition={defaultData.position} />
-					<About defaultAbout={defaultData.about} />
+				<div className='name-title-about'>
+					<Name userData={userData} />
+					<JobTitle userData={userData} />
+					<About userData={userData} />
 				</div>
-				<ContactInfo defaultContactInfo={defaultData} />
+				<ContactInfo userData={userData} />
 			</div>
 		);
 	}

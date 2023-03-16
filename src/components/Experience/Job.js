@@ -6,19 +6,19 @@ export default class Job extends Component {
     }
 
 	render() {
-		const { defaultData } = this.props;
+		const { userData } = this.props;
 
 		return (
 			<div className='Job'>
 				<div className="job-info">
-                    <div className='company left'>{defaultData.company}</div>
-                    <div className='period right'>{defaultData.period}</div>
+                    <div className='company left'>{userData.company}</div>
+                    <div className='period right'>{userData.period}</div>
                 </div>
 				<div className="job-info">
-                    <div className='position left'>{defaultData.position}</div>
-                    <div className='location right'>{defaultData.location}</div>
+                    <div className='position left'>{userData.position}</div>
+                    <div className='location right'>{userData.location}</div>
                 </div>
-				<div className='job-description'>{defaultData.description}</div>
+				<div className='job-description'>{userData.description}</div>
 			</div>
 		);
 	}

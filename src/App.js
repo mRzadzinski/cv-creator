@@ -11,7 +11,7 @@ import './styles/PersonalInfo.scss';
 import './styles/Experience.scss';
 import './styles/Options.scss';
 import './styles/PersonalInfo/Name.scss';
-import './styles/PersonalInfo/Position.scss';
+import './styles/PersonalInfo/JobTitle.scss';
 import './styles/PersonalInfo/About.scss';
 import './styles/PersonalInfo/ContactInfo.scss';
 import './styles/Experience/Job.scss';
@@ -23,7 +23,7 @@ class App extends Component {
 		super(props);
 
 		this.state = {
-			userInfo: Object.assign({}, obiWanInfo),
+			userData: Object.assign({}, obiWanInfo),
 			photo: 'demo',
 		};
 
@@ -37,14 +37,14 @@ class App extends Component {
 
 	renderDemo() {
 		this.setState({
-			userInfo: Object.assign({}, obiWanInfo),
+			userData: Object.assign({}, obiWanInfo),
 			photo: 'demo',
 		});
 	}
 
 	eraseData() {
 		this.setState({
-			userInfo: Object.assign({}, dataBoilerplate),
+			userData: Object.assign({}, dataBoilerplate),
 			photo: null,
 		});
 
@@ -59,14 +59,14 @@ class App extends Component {
 	}
 
 	render() {
-		const { userInfo, photo } = this.state;
+		const { userData, photo } = this.state;
 
 		return (
 			<div className='App'>
 				<Options eraseData={this.eraseData} renderDemo={this.renderDemo} />
 				<div className='cv'>
-					<Experience defaultData={userInfo} />
-					<PersonalInfo defaultData={userInfo} />
+					<Experience userData={userData} />
+					<PersonalInfo userData={userData} />
 					<Photo photoDemo={photo} assignClearPhoto={this.assignClearPhoto} />
 				</div>
 			</div>
