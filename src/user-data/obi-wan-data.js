@@ -2,7 +2,7 @@ const obiWanInfo = {
 	// Personal info
 	name: 'Obi-Wan',
 	surname: 'Kenobi',
-	position: 'Senior Persuasion Specialist',
+	jobTitle: 'Senior Persuasion Specialist',
 	about:
 		"An international expert in the field of shadow work and persuasion. Former head coach of Jedi Academy, where he conducted the top-ranked MBA course 'Mastering Emotions and Force Persuasion'. Currently human rights activist.",
 	email: 'obi-wan.kenobi@gmail.com',

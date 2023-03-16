@@ -5,7 +5,7 @@ export default class JobTitle extends Component {
         const { userData } = this.props;
 
         let jobTitle;
-		if (userData.name !== '') {
+		if (userData.jobTitle !== '') {
 			jobTitle = <div className="JobTitle">{userData.jobTitle}</div>
 		} else {
 			jobTitle = <div className="JobTitle">Job Title</div>

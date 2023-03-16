@@ -41,7 +41,7 @@ export default class ContactInfo extends Component {
 
         return(
             <div className="ContactInfo">
-                <div className='about'>Contact Info</div>
+                <div className='contact-info-header'>Contact Info</div>
                 {email}
                 {phone}
                 {street}

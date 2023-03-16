@@ -2,7 +2,7 @@ const dataBoilerplate = {
 	// Personal info
 	name: '',
 	surname: '',
-	jobTitle: 'aaa',
+	jobTitle: '',
 	about: '',
 	email: '',
 	phone: '',
