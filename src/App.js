@@ -27,8 +27,12 @@ class App extends Component {
 			photo: 'demo',
 		};
 
+		// Store Photo's component function
+		this.clearPhoto = null;
+
 		this.eraseData = this.eraseData.bind(this);
 		this.renderDemo = this.renderDemo.bind(this);
+		this.assignClearPhoto = this.assignClearPhoto.bind(this);
 	}
 
 	renderDemo() {
@@ -43,6 +47,15 @@ class App extends Component {
 			userInfo: Object.assign({}, dataBoilerplate),
 			photo: null,
 		});
+
+		if (this.clearPhoto) {
+			this.clearPhoto();
+		}
+	}
+
+	// Store Photo's component function through props
+	assignClearPhoto(clearPhotoFn) {
+		this.clearPhoto = clearPhotoFn;
 	}
 
 	render() {
@@ -54,7 +67,7 @@ class App extends Component {
 				<div className='cv'>
 					<Experience defaultData={userInfo} />
 					<PersonalInfo defaultData={userInfo} />
-					<Photo photoDemo={photo} />
+					<Photo photoDemo={photo} assignClearPhoto={this.assignClearPhoto} />
 				</div>
 			</div>
 		);
