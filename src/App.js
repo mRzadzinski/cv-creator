@@ -24,6 +24,7 @@ class App extends Component {
 
 		this.state = {
 			userInfo: Object.assign({}, obiWanInfo),
+			photo: 'demo',
 		};
 
 		this.eraseData = this.eraseData.bind(this);
@@ -33,17 +34,19 @@ class App extends Component {
 	renderDemo() {
 		this.setState({
 			userInfo: Object.assign({}, obiWanInfo),
+			photo: 'demo',
 		});
 	}
 
 	eraseData() {
 		this.setState({
 			userInfo: Object.assign({}, dataBoilerplate),
+			photo: null,
 		});
 	}
 
 	render() {
-		const { userInfo } = this.state;
+		const { userInfo, photo } = this.state;
 
 		return (
 			<div className='App'>
@@ -51,7 +54,7 @@ class App extends Component {
 				<div className='cv'>
 					<Experience defaultData={userInfo} />
 					<PersonalInfo defaultData={userInfo} />
-					<Photo />
+					<Photo photoDemo={photo} />
 				</div>
 			</div>
 		);
