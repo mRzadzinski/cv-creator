@@ -12,7 +12,7 @@ body {
 #root {
 	display: flex;
 	justify-content: center;
-  min-width: 1310px;
+	min-width: 1310px;
 
 	font-family: 'Kanit', sans-serif;
 }
@@ -20,10 +20,10 @@ body {
 .App {
 	display: flex;
 	justify-content: center;
-  position: relative;
+	position: relative;
 
 	min-width: 1250px;
-  margin: 0 30px 0 30px;
+	margin: 0 30px 0 30px;
 }
 
 .cv {
@@ -33,7 +33,7 @@ body {
 		'Photo Experience'
 		'PersonalInfo Experience';
 
-  z-index: 1;
+	z-index: 1;
 
 	width: 950px;
 	min-height: 1345px;
@@ -54,4 +54,10 @@ body {
 
 .Experience {
 	grid-area: Experience;
+}
+
+// Retain proper position after scaling
+.wrap {
+	position: relative;
+	transform-origin: 50% 0;
 }

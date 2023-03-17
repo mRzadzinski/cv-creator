@@ -3,6 +3,12 @@ import React, { Component } from 'react';
 export default class Options extends Component {
 	constructor(props) {
 		super(props);
+
+		this.scaleApp = this.scaleApp.bind(this);
+	}
+
+	scaleApp(percentage) {
+		this.props.AppRef.current.style.transform = `scale(${percentage})`;
 	}
 
 	render() {
@@ -10,26 +16,26 @@ export default class Options extends Component {
 
 		return (
 			<div className='Options'>
-				<button onClick={() => eraseData()} className='button-59 erase-btn'>
+				<button onClick={() => eraseData()} className='button erase-btn'>
 					ERASE
 				</button>
-				<button onClick={() => renderDemo()} className='button-59 demo-btn'>
+				<button onClick={() => renderDemo()} className='button demo-btn'>
 					DEMO
 				</button>
 
 				<span className='material-symbols-outlined' id='magnifying-glass'>
 					zoom_in
 				</span>
-				<button className='button-59'>100%</button>
-				<button className='button-59'>75%</button>
-				<button className='button-59' id='fifty-button'>
+				<button onClick={() => this.scaleApp(1)} className='button'>100%</button>
+				<button onClick={() => this.scaleApp(.75)} className='button'>75%</button>
+				<button onClick={() => this.scaleApp(.5)} className='button' id='fifty-button'>
 					50%
 				</button>
 
 				<span className='material-symbols-outlined' id='download-icon'>
 					download
 				</span>
-				<button className='button-59 pdf-btn'>PDF</button>
+				<button className='button pdf-btn'>PDF</button>
 			</div>
 		);
 	}

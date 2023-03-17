@@ -6,7 +6,7 @@ button {
 
 // Button style from
 // https://getcssscan.com/css-buttons-examples
-.button-59 {
+.button {
 	align-items: center;
 	background-color: #ebebed;
 	border: 2px solid #000;
@@ -34,7 +34,7 @@ button {
 }
 
 $hover-color: rgb(0, 80, 199);
-.button-59:hover {
+.button:hover {
 	border-color: $hover-color;
 	color: $hover-color;
 	fill: $hover-color;

@@ -28,6 +28,7 @@ class App extends Component {
 			photo: 'demo',
 		};
 
+		this.AppRef = React.createRef();
 		this.PhotoRef = React.createRef();
 
 		this.eraseData = this.eraseData.bind(this);
@@ -54,8 +55,8 @@ class App extends Component {
 		const { userData } = this.state;
 
 		return (
-			<div className='App'>
-				<Options eraseData={this.eraseData} renderDemo={this.renderDemo} />
+			<div className='App wrap' ref={this.AppRef}>
+				<Options eraseData={this.eraseData} renderDemo={this.renderDemo} AppRef={this.AppRef} />
 				<div className='cv'>
 					<Experience userData={userData} />
 					<PersonalInfo userData={userData} />
