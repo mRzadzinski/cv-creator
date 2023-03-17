@@ -24,42 +24,34 @@ class App extends Component {
 
 		this.state = {
 			userData: Object.assign({}, obiWanInfo),
+			// demo or null
 			photo: 'demo',
 		};
 
-		// Store Photo's component function
-		this.clearPhoto = null;
+		this.PhotoRef = React.createRef();
 
 		this.eraseData = this.eraseData.bind(this);
 		this.renderDemo = this.renderDemo.bind(this);
-		this.assignClearPhoto = this.assignClearPhoto.bind(this);
 	}
 
 	renderDemo() {
 		this.setState({
 			userData: Object.assign({}, obiWanInfo),
-			photo: 'demo',
 		});
+
+		this.PhotoRef.current.displayDemo();
 	}
 
 	eraseData() {
 		this.setState({
 			userData: Object.assign({}, dataBoilerplate),
-			photo: null,
 		});
 
-		if (this.clearPhoto) {
-			this.clearPhoto();
-		}
-	}
-
-	// Store Photo's component function through props
-	assignClearPhoto(clearPhotoFn) {
-		this.clearPhoto = clearPhotoFn;
+		this.PhotoRef.current.removeUserPhoto();
 	}
 
 	render() {
-		const { userData, photo } = this.state;
+		const { userData } = this.state;
 
 		return (
 			<div className='App'>
@@ -67,7 +59,7 @@ class App extends Component {
 				<div className='cv'>
 					<Experience userData={userData} />
 					<PersonalInfo userData={userData} />
-					<Photo photoDemo={photo} assignClearPhoto={this.assignClearPhoto} />
+					<Photo ref={this.PhotoRef} />
 				</div>
 			</div>
 		);
