@@ -3,6 +3,8 @@ import Name from './PersonalInfo/Name';
 import JobTitle from './PersonalInfo/JobTitle';
 import About from './PersonalInfo/About';
 import ContactInfo from './PersonalInfo/ContactInfo';
+import EditBtn from './edit-data/EditBtn';
+import SaveBtn from './edit-data/SaveBtn';
 
 export default class PersonalInfo extends Component {
 	constructor(props) {
@@ -20,6 +22,8 @@ export default class PersonalInfo extends Component {
 					<About userData={userData} />
 				</div>
 				<ContactInfo userData={userData} />
+
+				<SaveBtn />
 			</div>
 		);
 	}

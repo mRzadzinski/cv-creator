@@ -17,6 +17,7 @@ import './styles/PersonalInfo/ContactInfo.scss';
 import './styles/Experience/Job.scss';
 import './styles/options-bar/buttons.scss';
 import './styles/options-bar/icons.scss';
+import './styles/edit-data/EditBtns.scss'
 
 class App extends Component {
 	constructor(props) {
