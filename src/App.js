@@ -17,7 +17,7 @@ import './styles/PersonalInfo/ContactInfo.scss';
 import './styles/Experience/Job.scss';
 import './styles/options-bar/buttons.scss';
 import './styles/options-bar/icons.scss';
-import './styles/edit-data/EditBtns.scss'
+import './styles/edit-data/EditBtns.scss';
 
 class App extends Component {
 	constructor(props) {
@@ -34,6 +34,7 @@ class App extends Component {
 
 		this.eraseData = this.eraseData.bind(this);
 		this.renderDemo = this.renderDemo.bind(this);
+		this.updateData = this.updateData.bind(this);
 	}
 
 	renderDemo() {
@@ -52,16 +53,30 @@ class App extends Component {
 		this.PhotoRef.current.removeUserPhoto();
 	}
 
+	updateData(propName, value) {
+		this.setState({
+			...this.state,
+			userData: {
+				...this.state.userData,
+				[propName]: value,
+			},
+		});
+	}
+
 	render() {
 		const { userData } = this.state;
 
 		return (
 			<div className='App wrap' ref={this.AppRef}>
-				<Options eraseData={this.eraseData} renderDemo={this.renderDemo} AppRef={this.AppRef} />
+				<Options
+					eraseData={this.eraseData}
+					renderDemo={this.renderDemo}
+					AppRef={this.AppRef}
+				/>
 				<div className='cv'>
-					<Experience userData={userData} />
-					<PersonalInfo userData={userData} />
 					<Photo ref={this.PhotoRef} />
+					<PersonalInfo userData={userData} updateData={this.updateData} />
+					<Experience userData={userData} updateData={this.updateData} />
 				</div>
 			</div>
 		);

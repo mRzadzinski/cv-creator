@@ -6,9 +6,13 @@ export default class SaveBtn extends Component {
 	}
 
 	render() {
+		const { toggleEditMode } = this.props;
+
 		return (
-			<div className='SaveBtn'>
-				<span class='material-symbols-outlined' id='save-sign' title='Save'>done</span>
+			<div className='SaveBtn' onClick={() => toggleEditMode()}>
+				<span className='material-symbols-outlined' id='save-sign' title='Save'>
+					done
+				</span>
 			</div>
 		);
 	}

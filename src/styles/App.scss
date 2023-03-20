@@ -62,3 +62,19 @@ body {
 	position: relative;
 	transform-origin: 50% 0;
 }
+
+input[type='text'] {
+	width:250px;
+	border-radius: 5px;
+	background: #fff;
+	border: 1px solid #3b3530;
+	outline:none;
+	padding: 6px;
+
+	font-family: inherit;
+
+	&:focus {
+		border:1px solid #56b4ef;
+		box-shadow: 0px 0px 3px 1px #c8def0;
+	}
+}

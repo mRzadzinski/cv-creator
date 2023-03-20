@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import Job from './Experience/Job';
 import EditBtn from './edit-data/EditBtn';
+import SaveBtn from './edit-data/SaveBtn';
 import uniqid from 'uniqid';
 
 export default class Experience extends Component {
@@ -41,8 +42,6 @@ export default class Experience extends Component {
 				<div className="exp-content">
 					<div className='hobbies'>{userData.hobbies}</div>
 				</div>
-
-				<EditBtn />
 			</div>
 		);
 	}

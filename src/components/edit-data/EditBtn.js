@@ -6,9 +6,13 @@ export default class EditBtn extends Component {
 	}
 
 	render() {
+		const { toggleEditMode } = this.props;
+
 		return (
-			<div className='EditBtn'>
-				<span class='material-symbols-outlined' id='edit-sign' title='Edit'>edit</span>
+			<div className='EditBtn' onClick={() => toggleEditMode()}>
+				<span className='material-symbols-outlined' id='edit-sign' title='Edit'>
+					edit
+				</span>
 			</div>
 		);
 	}

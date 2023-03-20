@@ -2,20 +2,45 @@ import React, { Component } from 'react';
 
 export default class Name extends Component {
 	render() {
-		const { userData } = this.props;
+		const { userData, editMode, updateData } = this.props;
 
-		let name;
+		let nameDefaultValue;
 		if (userData.name !== '') {
-			name = <div className='name'>{userData.name}</div>;
+			nameDefaultValue = userData.name;
 		} else {
-			name = <div className='name'>Name</div>;
+			nameDefaultValue = '';
 		}
 
-		let surname;
+		let surnameDefaultValue;
 		if (userData.surname !== '') {
-			surname = <div className='surname'>{userData.surname}</div>;
+			surnameDefaultValue = userData.surname;
 		} else {
-			surname = <div className='surname'>Surname</div>;
+			surnameDefaultValue = '';
+		}
+
+		let name;
+		let surname;
+		if (editMode) {
+			name = (
+				<input
+					className='name-input'
+					type='text'
+					defaultValue={nameDefaultValue}
+					placeholder='Name'
+				/>
+			);
+
+			surname = (
+				<input
+					className='name-input surname-input'
+					type='text'
+					defaultValue={surnameDefaultValue}
+					placeholder='Surname'
+				/>
+			);
+		} else {
+			name = <div className='name'>{nameDefaultValue}</div>;
+			surname = <div className='surname'>{surnameDefaultValue}</div>;
 		}
 
 		return (
