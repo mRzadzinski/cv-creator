@@ -14,7 +14,7 @@ export default class About extends Component {
 		const { userData, editMode, updateData } = this.props;
 
 		let aboutDefaultValue;
-		if (userData.name !== '') {
+		if (userData.about !== '') {
 			aboutDefaultValue = userData.about;
 		} else {
 			aboutDefaultValue = '';
@@ -32,7 +32,7 @@ export default class About extends Component {
 					onChange={() => updateData('about', this.aboutInputRef.current.value)}
 				/>
 		} else {
-			if (userData.name !== '') {
+			if (userData.about !== '') {
 				about = <div className='about-info'>{userData.about}</div>;
 			} else {
 				about = <div className='about-info'>{this.defaultAbout}</div>;

@@ -12,7 +12,7 @@ export default class ContactInfo extends Component {
     }
 
     render() {
-        const { userData, updateData } = this.props;
+        const { userData, editMode, updateData } = this.props;
 
         let email;
 		if (userData.email !== '') {
