@@ -1,8 +1,18 @@
 import React, { Component } from "react";
 
 export default class ContactInfo extends Component {
+    constructor(props) {
+        super(props);
+
+		this.emailInputRef = React.createRef()   
+		this.phoneInputRef = React.createRef()   
+		this.streetInputRef = React.createRef()   
+		this.cityInputRef = React.createRef()   
+		this.countryInputRef = React.createRef()   
+    }
+
     render() {
-        const { userData } = this.props;
+        const { userData, updateData } = this.props;
 
         let email;
 		if (userData.email !== '') {

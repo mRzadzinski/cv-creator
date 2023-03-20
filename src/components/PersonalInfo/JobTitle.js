@@ -1,8 +1,14 @@
 import React, { Component } from "react";
 
 export default class JobTitle extends Component {
+    constructor(props) {
+        super(props);
+
+		this.jobTitleInputRef = React.createRef()
+    }
+
     render() {
-        const { userData } = this.props;
+        const { userData, updateData } = this.props;
 
         let jobTitle;
 		if (userData.jobTitle !== '') {

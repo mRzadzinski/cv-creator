@@ -44,10 +44,10 @@ export default class PersonalInfo extends Component {
 			<div className='PersonalInfo'>
 				<div className='name-title-about'>
 					<Name userData={userData} editMode={editMode} updateData={updateData} />
-					<JobTitle userData={userData} editMode={editMode} />
-					<About userData={userData} editMode={editMode} />
+					<JobTitle userData={userData} editMode={editMode} updateData={updateData} />
+					<About userData={userData} editMode={editMode} updateData={updateData} />
 				</div>
-				<ContactInfo userData={userData} editMode={editMode} />
+				<ContactInfo userData={userData} editMode={editMode} updateData={updateData} />
 
 				{cornerButton}
 			</div>
