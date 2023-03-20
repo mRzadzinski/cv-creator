@@ -25,12 +25,11 @@ class App extends Component {
 
 		this.state = {
 			userData: Object.assign({}, obiWanInfo),
-			// demo or null
-			photo: 'demo',
 		};
 
 		this.AppRef = React.createRef();
 		this.PhotoRef = React.createRef();
+		this.PersonalInfoRef = React.createRef();
 
 		this.eraseData = this.eraseData.bind(this);
 		this.renderDemo = this.renderDemo.bind(this);
@@ -42,6 +41,10 @@ class App extends Component {
 			userData: Object.assign({}, obiWanInfo),
 		});
 
+		if (this.PersonalInfoRef.current.state.editMode) {
+			this.PersonalInfoRef.current.toggleEditMode();
+		}
+
 		this.PhotoRef.current.displayDemo();
 	}
 
@@ -50,7 +53,12 @@ class App extends Component {
 			userData: Object.assign({}, dataBoilerplate),
 		});
 
+		if (this.PersonalInfoRef.current.state.editMode) {
+			this.PersonalInfoRef.current.toggleEditMode();
+		}
+
 		this.PhotoRef.current.removeUserPhoto();
+
 	}
 
 	updateData(propName, value) {
@@ -75,7 +83,7 @@ class App extends Component {
 				/>
 				<div className='cv'>
 					<Photo ref={this.PhotoRef} />
-					<PersonalInfo userData={userData} updateData={this.updateData} />
+					<PersonalInfo userData={userData} updateData={this.updateData} ref={this.PersonalInfoRef} />
 					<Experience userData={userData} updateData={this.updateData} />
 				</div>
 			</div>
