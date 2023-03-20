@@ -22,11 +22,15 @@ export default class PersonalInfo extends Component {
 	}
 
 	showEditBtn() {
-		this.editBtnRef.current.editBtnRef.current.style.visibility = 'visible';
+		if (!this.state.editMode) {
+			this.editBtnRef.current.editBtnRef.current.style.visibility = 'visible';
+		}
 	}
 
 	hideEditBtn() {
-		this.editBtnRef.current.editBtnRef.current.style.visibility = 'hidden';
+		if (!this.state.editMode) {
+			this.editBtnRef.current.editBtnRef.current.style.visibility = 'hidden';
+		}
 	}
 
 	toggleEditMode() {
