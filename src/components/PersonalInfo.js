@@ -14,7 +14,19 @@ export default class PersonalInfo extends Component {
 			editMode: false,
 		};
 
+		this.editBtnRef = React.createRef();
+
+		this.showEditBtn = this.showEditBtn.bind(this);
+		this.hideEditBtn = this.hideEditBtn.bind(this);
 		this.toggleEditMode = this.toggleEditMode.bind(this);
+	}
+
+	showEditBtn() {
+		this.editBtnRef.current.editBtnRef.current.style.visibility = 'visible';
+	}
+
+	hideEditBtn() {
+		this.editBtnRef.current.editBtnRef.current.style.visibility = 'hidden';
 	}
 
 	toggleEditMode() {
@@ -37,17 +49,39 @@ export default class PersonalInfo extends Component {
 		if (editMode) {
 			cornerButton = <SaveBtn toggleEditMode={this.toggleEditMode} />;
 		} else {
-			cornerButton = <EditBtn toggleEditMode={this.toggleEditMode} />;
+			cornerButton = (
+				<EditBtn toggleEditMode={this.toggleEditMode} ref={this.editBtnRef} />
+			);
 		}
 
 		return (
-			<div className='PersonalInfo'>
+			<div
+				className='PersonalInfo'
+				onMouseEnter={() => this.showEditBtn()}
+				onMouseLeave={() => this.hideEditBtn()}
+			>
 				<div className='name-title-about'>
-					<Name userData={userData} editMode={editMode} updateData={updateData} />
-					<JobTitle userData={userData} editMode={editMode} updateData={updateData} />
-					<About userData={userData} editMode={editMode} updateData={updateData} />
+					<Name
+						userData={userData}
+						editMode={editMode}
+						updateData={updateData}
+					/>
+					<JobTitle
+						userData={userData}
+						editMode={editMode}
+						updateData={updateData}
+					/>
+					<About
+						userData={userData}
+						editMode={editMode}
+						updateData={updateData}
+					/>
 				</div>
-				<ContactInfo userData={userData} editMode={editMode} updateData={updateData} />
+				<ContactInfo
+					userData={userData}
+					editMode={editMode}
+					updateData={updateData}
+				/>
 
 				{cornerButton}
 			</div>
