@@ -15,6 +15,7 @@ import './styles/PersonalInfo/JobTitle.scss';
 import './styles/PersonalInfo/About.scss';
 import './styles/PersonalInfo/ContactInfo.scss';
 import './styles/Experience/Job.scss';
+import './styles/Experience/Skills.scss';
 import './styles/options-bar/buttons.scss';
 import './styles/options-bar/icons.scss';
 import './styles/edit-data/EditBtns.scss';
@@ -72,6 +73,13 @@ class App extends Component {
 			this.setState({
 				...stateCopy,
 			});
+			// Deal with prop arrays
+		} else if (Array.isArray(this.state.userData[propName])) {
+			const stateCopy = Object.assign({}, this.state);
+			stateCopy.userData[propName][arrayIndex] = value;
+			this.setState({
+				...stateCopy,
+			});
 		} else {
 			this.setState({
 				...this.state,
@@ -100,7 +108,11 @@ class App extends Component {
 						updateData={this.updateData}
 						ref={this.PersonalInfoRef}
 					/>
-					<Experience userData={userData} updateData={this.updateData} ref={this.ExpRef} />
+					<Experience
+						userData={userData}
+						updateData={this.updateData}
+						ref={this.ExpRef}
+					/>
 				</div>
 			</div>
 		);

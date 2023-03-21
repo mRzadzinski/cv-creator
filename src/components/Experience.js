@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import Job from './Experience/Job';
+import Skill from './Experience/Skill';
 import EditBtn from './edit-data/EditBtn';
 import SaveBtn from './edit-data/SaveBtn';
-import uniqid from 'uniqid';
 
 export default class Experience extends Component {
 	constructor(props) {
@@ -14,6 +14,7 @@ export default class Experience extends Component {
 
 		this.editBtnRef = React.createRef();
 		this.hobbiesInput = React.createRef();
+		this.skillsInput = React.createRef();
 
 		this.showEditBtn = this.showEditBtn.bind(this);
 		this.hideEditBtn = this.hideEditBtn.bind(this);
@@ -119,10 +120,16 @@ export default class Experience extends Component {
 
 				<div className='header'>Skills</div>
 				<div className='exp-content'>
-					<ul>
+					<ul className='skills'>
 						{userData.skills.map((skill, index) => (
-							<li key={index} className='skill'>
-								{skill}
+							<li className='skill' key={index}>
+								<Skill
+									key={index}
+									userData={userData.skills[index]}
+									editMode={editMode}
+									updateData={updateData}
+									expIndex={index}
+								/>
 							</li>
 						))}
 					</ul>
