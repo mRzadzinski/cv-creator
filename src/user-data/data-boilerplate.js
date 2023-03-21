@@ -29,7 +29,7 @@ const dataBoilerplate = {
 			description: '',
 		},
 	],
-	skills: [],
+	skills: [''],
 	hobbies: '',
 };
 

@@ -58,11 +58,15 @@ export default class Experience extends Component {
 			);
 		}
 
+		let hobbiesDefaultInput;
 		let hobbiesDefault;
 		if (userData.hobbies !== '') {
+			hobbiesDefaultInput = userData.hobbies;
 			hobbiesDefault = userData.hobbies;
 		} else {
-			hobbiesDefault = '';
+			hobbiesDefaultInput = '';
+			hobbiesDefault =
+				"Some interesting things you do besides work.";
 		}
 
 		let hobbies;
@@ -73,14 +77,14 @@ export default class Experience extends Component {
 					rows={3}
 					placeholder='Hobbies'
 					ref={this.hobbiesInput}
-					defaultValue={hobbiesDefault}
+					defaultValue={hobbiesDefaultInput}
 					onChange={() =>
 						updateData('hobbies', this.hobbiesInput.current.value)
 					}
 				/>
 			);
 		} else {
-			hobbies = <div className='hobbies'>{userData.hobbies}</div>;
+			hobbies = <div className='hobbies'>{hobbiesDefault}</div>;
 		}
 
 		return (

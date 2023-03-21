@@ -10,11 +10,14 @@ export default class Skill extends Component {
 	render() {
 		const { userData, editMode, updateData, expType, expIndex } = this.props;
 
-		let skillDefault;
+		let skillDefaultInput;
+        let skillDefault;
 		if (userData !== '') {
-			skillDefault = userData;
+			skillDefaultInput = userData;
+            skillDefault = userData;
 		} else {
-			skillDefault = '';
+            skillDefaultInput = '';
+			skillDefault = 'Your amazing skill';
 		}
 
 		let skill;
@@ -25,14 +28,14 @@ export default class Skill extends Component {
 					type='text'
 					placeholder='Skill'
 					ref={this.skillInput}
-					defaultValue={skillDefault}
+					defaultValue={skillDefaultInput}
 					onChange={() =>
 						updateData('skills', this.skillInput.current.value, null, expIndex)
 					}
 				/>
 			);
 		} else {
-			skill = <span>{userData}</span>;
+			skill = <span>{skillDefault}</span>;
 		}
 
 		return <div>{skill}</div>;

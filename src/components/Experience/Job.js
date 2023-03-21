@@ -14,39 +14,66 @@ export default class Job extends Component {
 	render() {
 		const { userData, editMode, updateData, expType, expIndex } = this.props;
 
+		let companyDefaultInput;
 		let companyDefault;
 		if (userData.company !== '') {
+			companyDefaultInput = userData.company;
 			companyDefault = userData.company;
 		} else {
-			companyDefault = '';
+			companyDefaultInput = '';
+			if (expType === 'jobs') {
+				companyDefault = 'Company Name';
+			} else if (expType === 'education') {
+				companyDefault = 'School Name';
+			}
 		}
 
+		let periodDefaultInput;
 		let periodDefault;
 		if (userData.period !== '') {
+			periodDefaultInput = userData.period;
 			periodDefault = userData.period;
 		} else {
-			periodDefault = '';
+			periodDefaultInput = '';
+			periodDefault = 'Time Period';
 		}
 
+		let positionDefaultInput;
 		let positionDefault;
 		if (userData.position !== '') {
+			positionDefaultInput = userData.position;
 			positionDefault = userData.position;
 		} else {
-			positionDefault = '';
+			positionDefaultInput = '';
+			if (expType === 'jobs') {
+				positionDefault = 'Job Title';
+			} else if (expType === 'education') {
+				positionDefault = 'Course Name / Profile';
+			}
 		}
 
+		let locationDefaultInput;
 		let locationDefault;
 		if (userData.location !== '') {
+			locationDefaultInput = userData.location;
 			locationDefault = userData.location;
 		} else {
-			locationDefault = '';
+			locationDefaultInput = '';
+			locationDefault = 'Location';
 		}
 
+		let descriptionDefaultInput;
 		let descriptionDefault;
 		if (userData.description !== '') {
+			descriptionDefaultInput = userData.description;
 			descriptionDefault = userData.description;
 		} else {
-			descriptionDefault = '';
+			descriptionDefaultInput = '';
+			if (expType === 'jobs') {
+				descriptionDefault = 'Description of this job.';
+			} else if (expType === 'education') {
+				descriptionDefault = '';
+			}
 		}
 
 		let company;
@@ -61,7 +88,7 @@ export default class Job extends Component {
 					type='text'
 					placeholder='Company'
 					ref={this.companyInput}
-					defaultValue={companyDefault}
+					defaultValue={companyDefaultInput}
 					onChange={() =>
 						updateData(
 							'company',
@@ -78,7 +105,7 @@ export default class Job extends Component {
 					type='text'
 					placeholder='Period'
 					ref={this.periodInput}
-					defaultValue={periodDefault}
+					defaultValue={periodDefaultInput}
 					onChange={() =>
 						updateData(
 							'period',
@@ -95,7 +122,7 @@ export default class Job extends Component {
 					type='text'
 					placeholder='Position'
 					ref={this.positionInput}
-					defaultValue={positionDefault}
+					defaultValue={positionDefaultInput}
 					onChange={() =>
 						updateData(
 							'position',
@@ -112,7 +139,7 @@ export default class Job extends Component {
 					type='text'
 					placeholder='Location'
 					ref={this.locationInput}
-					defaultValue={locationDefault}
+					defaultValue={locationDefaultInput}
 					onChange={() =>
 						updateData(
 							'location',
@@ -129,7 +156,7 @@ export default class Job extends Component {
 					rows={3}
 					placeholder='Description'
 					ref={this.descriptionInput}
-					defaultValue={descriptionDefault}
+					defaultValue={descriptionDefaultInput}
 					onChange={() =>
 						updateData(
 							'description',
@@ -141,12 +168,12 @@ export default class Job extends Component {
 				/>
 			);
 		} else {
-			company = <div className='company left'>{userData.company}</div>;
-			period = <div className='period right'>{userData.period}</div>;
-			position = <div className='position left'>{userData.position}</div>;
-			location = <div className='location right'>{userData.location}</div>;
+			company = <div className='company left'>{companyDefault}</div>;
+			period = <div className='period right'>{periodDefault}</div>;
+			position = <div className='position left'>{positionDefault}</div>;
+			location = <div className='location right'>{locationDefault}</div>;
 			description = (
-				<div className='job-description'>{userData.description}</div>
+				<div className='job-description'>{descriptionDefault}</div>
 			);
 		}
 
