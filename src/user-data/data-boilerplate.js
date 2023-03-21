@@ -20,12 +20,14 @@ const dataBoilerplate = {
 			description: '',
 		},
 	],
-	education: {
-		company: '',
-		position: '',
-		location: '',
-		period: '',
-	},
+	education: [
+		{
+			company: '',
+			position: '',
+			location: '',
+			period: '',
+		},
+	],
 	skills: [],
 	hobbies: '',
 };

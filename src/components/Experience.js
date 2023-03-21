@@ -72,7 +72,9 @@ export default class Experience extends Component {
 
 				<div className='header'>Education</div>
 				<div className='exp-content'>
-					<Job userData={userData.education} />
+				{userData.education.map((edu, index) => (
+						<Job key={uniqid()} userData={userData.education[index]} />
+					))}
 				</div>
 
 				<div className='header'>Skills</div>

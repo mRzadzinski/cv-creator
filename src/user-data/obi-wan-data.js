@@ -38,15 +38,22 @@ const obiWanInfo = {
 				'Encouraging forgetful customers to regulate their liabilities.',
 		},
 	],
-	education: {
-		company: 'Jedi Academy',
-		position: 'MBA Psychology & Mind Manipulation Course',
-		location: 'Coruscant',
-		period: '1967 - 1972',
-		description:
-			'',
-	},
-	skills: ['Mentoring', 'Lightsaber combat', 'Driving license (B cat.)', 'Problem solving', 'Telepathy'],
+	education: [
+		{
+			company: 'Jedi Academy',
+			position: 'MBA Psychology & Mind Manipulation Course',
+			location: 'Coruscant',
+			period: '1967 - 1972',
+			description: '',
+		},
+	],
+	skills: [
+		'Mentoring',
+		'Lightsaber combat',
+		'Driving license (B cat.)',
+		'Problem solving',
+		'Telepathy',
+	],
 	hobbies: 'Desert gazing, coaching intergalactic heroes, playing with my dog.',
 };
 
