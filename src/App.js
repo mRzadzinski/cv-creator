@@ -30,6 +30,7 @@ class App extends Component {
 		this.AppRef = React.createRef();
 		this.PhotoRef = React.createRef();
 		this.PersonalInfoRef = React.createRef();
+		this.ExpRef = React.createRef();
 
 		this.eraseData = this.eraseData.bind(this);
 		this.renderDemo = this.renderDemo.bind(this);
@@ -56,19 +57,30 @@ class App extends Component {
 		if (this.PersonalInfoRef.current.state.editMode) {
 			this.PersonalInfoRef.current.toggleEditMode();
 		}
+		if (this.ExpRef.current.state.editMode) {
+			this.ExpRef.current.toggleEditMode();
+		}
 
 		this.PhotoRef.current.removeUserPhoto();
-
 	}
 
-	updateData(propName, value) {
-		this.setState({
-			...this.state,
-			userData: {
-				...this.state.userData,
-				[propName]: value,
-			},
-		});
+	updateData(propName, value, arrayName, arrayIndex) {
+		// Deal with nested arrays containing objects
+		if (!this.state.userData[propName]) {
+			const stateCopy = Object.assign({}, this.state);
+			stateCopy.userData[arrayName][arrayIndex][propName] = value;
+			this.setState({
+				...stateCopy,
+			});
+		} else {
+			this.setState({
+				...this.state,
+				userData: {
+					...this.state.userData,
+					[propName]: value,
+				},
+			});
+		}
 	}
 
 	render() {
@@ -83,8 +95,12 @@ class App extends Component {
 				/>
 				<div className='cv'>
 					<Photo ref={this.PhotoRef} />
-					<PersonalInfo userData={userData} updateData={this.updateData} ref={this.PersonalInfoRef} />
-					<Experience userData={userData} updateData={this.updateData} />
+					<PersonalInfo
+						userData={userData}
+						updateData={this.updateData}
+						ref={this.PersonalInfoRef}
+					/>
+					<Experience userData={userData} updateData={this.updateData} ref={this.ExpRef} />
 				</div>
 			</div>
 		);

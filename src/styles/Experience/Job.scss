@@ -1,30 +1,54 @@
 .Job {
-    margin: 0 0 20px 0;
+	margin: 0 0 20px 0;
 
-    font-size: 20px;
+	font-size: 20px;
 }
 
 .job-info {
-    display: flex;
-    justify-content: space-between;
+	display: flex;
+	justify-content: space-between;
 
-    margin: 5px 0 5px 0;
+	margin: 5px 0 5px 0;
 
-    .left {
-        max-width: 360px;
-    }
+	.left {
+		max-width: 340px;
+	}
 
-    .right {
-        max-width: 150px;
-    }
+	.right {
+		max-width: 170px;
+	}
 }
 
 .company {
-    font-size: 23px;
-    font-weight: 500;
+	font-size: 23px;
+	font-weight: 500;
 }
 
-.job-description{
-    margin-top: 12px;
-    font-size: 18px;
+.job-description {
+	margin-top: 12px;
+	font-size: 18px;
+}
+
+#company-input {
+	width: 345px;
+	height: 20px;
+	font-size: 23px;
+}
+
+#position-input,
+#period-input,
+#location-input {
+	width: 345px;
+	height: 18px;
+	font-size: 20px;
+}
+
+#location-input,
+#period-input {
+	width: 155px;
+}
+
+#description-input {
+	width: 520px;
+	font-size: 18px;
 }

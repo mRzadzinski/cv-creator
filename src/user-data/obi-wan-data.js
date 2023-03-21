@@ -41,7 +41,7 @@ const obiWanInfo = {
 	education: [
 		{
 			company: 'Jedi Academy',
-			position: 'MBA Psychology & Mind Manipulation Course',
+			position: 'MBA Psychology & Mind Manipulation',
 			location: 'Coruscant',
 			period: '1967 - 1972',
 			description: '',

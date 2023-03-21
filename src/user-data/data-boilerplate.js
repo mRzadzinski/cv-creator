@@ -26,6 +26,7 @@ const dataBoilerplate = {
 			position: '',
 			location: '',
 			period: '',
+			description: '',
 		},
 	],
 	skills: [],

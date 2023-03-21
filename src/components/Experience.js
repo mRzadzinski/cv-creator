@@ -9,10 +9,11 @@ export default class Experience extends Component {
 		super(props);
 
 		this.state = {
-			editMode: false,
+			editMode: true,
 		};
 
 		this.editBtnRef = React.createRef();
+		this.hobbiesInput = React.createRef();
 
 		this.showEditBtn = this.showEditBtn.bind(this);
 		this.hideEditBtn = this.hideEditBtn.bind(this);
@@ -56,6 +57,31 @@ export default class Experience extends Component {
 			);
 		}
 
+		let hobbiesDefault;
+		if (userData.hobbies !== '') {
+			hobbiesDefault = userData.hobbies;
+		} else {
+			hobbiesDefault = '';
+		}
+
+		let hobbies;
+		if (editMode) {
+			hobbies = (
+				<textarea
+					id='hobbies-input'
+					rows={3}
+					placeholder='Hobbies'
+					ref={this.hobbiesInput}
+					defaultValue={hobbiesDefault}
+					onChange={() =>
+						updateData('hobbies', this.hobbiesInput.current.value)
+					}
+				/>
+			);
+		} else {
+			hobbies = <div className='hobbies'>{userData.hobbies}</div>;
+		}
+
 		return (
 			<div
 				className='Experience'
@@ -66,22 +92,36 @@ export default class Experience extends Component {
 
 				<div className='exp-content'>
 					{userData.jobs.map((job, index) => (
-						<Job key={uniqid()} userData={userData.jobs[index]} />
+						<Job
+							key={index}
+							userData={userData.jobs[index]}
+							editMode={editMode}
+							updateData={updateData}
+							expType='jobs'
+							expIndex={index}
+						/>
 					))}
 				</div>
 
 				<div className='header'>Education</div>
 				<div className='exp-content'>
-				{userData.education.map((edu, index) => (
-						<Job key={uniqid()} userData={userData.education[index]} />
+					{userData.education.map((edu, index) => (
+						<Job
+							key={index}
+							userData={userData.education[index]}
+							editMode={editMode}
+							updateData={updateData}
+							expType='education'
+							expIndex={index}
+						/>
 					))}
 				</div>
 
 				<div className='header'>Skills</div>
 				<div className='exp-content'>
 					<ul>
-						{userData.skills.map((skill) => (
-							<li key={uniqid()} className='skill'>
+						{userData.skills.map((skill, index) => (
+							<li key={index} className='skill'>
 								{skill}
 							</li>
 						))}
@@ -89,9 +129,7 @@ export default class Experience extends Component {
 				</div>
 
 				<div className='header'>Hobbies</div>
-				<div className='exp-content'>
-					<div className='hobbies'>{userData.hobbies}</div>
-				</div>
+				<div className='exp-content'>{hobbies}</div>
 
 				{cornerButton}
 			</div>

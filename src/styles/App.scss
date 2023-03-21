@@ -63,7 +63,7 @@ body {
 	transform-origin: 50% 0;
 }
 
-input[type='text'] {
+input[type='text'], textarea {
 	width:250px;
 	border-radius: 5px;
 	background: #fff;
@@ -78,3 +78,4 @@ input[type='text'] {
 		box-shadow: 0px 0px 3px 1px #c8def0;
 	}
 }
+
