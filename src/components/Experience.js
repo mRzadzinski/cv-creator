@@ -3,6 +3,7 @@ import Job from './Experience/Job';
 import Skill from './Experience/Skill';
 import EditBtn from './edit-data/EditBtn';
 import SaveBtn from './edit-data/SaveBtn';
+import AddBtn from './edit-data/AddBtn';
 
 export default class Experience extends Component {
 	constructor(props) {
@@ -13,6 +14,7 @@ export default class Experience extends Component {
 		};
 
 		this.editBtnRef = React.createRef();
+		this.addBtnRef = React.createRef();
 		this.hobbiesInput = React.createRef();
 		this.skillsInput = React.createRef();
 
@@ -50,12 +52,18 @@ export default class Experience extends Component {
 		const { editMode } = this.state;
 
 		let cornerButton;
+		let addBtn;
+		let addBtnSkills;
 		if (editMode) {
 			cornerButton = <SaveBtn toggleEditMode={this.toggleEditMode} />;
+			addBtn = <AddBtn />;
+			addBtnSkills = <AddBtn id='add-skill' />;
 		} else {
 			cornerButton = (
 				<EditBtn toggleEditMode={this.toggleEditMode} ref={this.editBtnRef} />
 			);
+			addBtn = null;
+			addBtnSkills = null;
 		}
 
 		let hobbiesDefaultInput;
@@ -65,8 +73,7 @@ export default class Experience extends Component {
 			hobbiesDefault = userData.hobbies;
 		} else {
 			hobbiesDefaultInput = '';
-			hobbiesDefault =
-				"Some interesting things you do besides work.";
+			hobbiesDefault = 'Some interesting things you do besides work.';
 		}
 
 		let hobbies;
@@ -107,6 +114,7 @@ export default class Experience extends Component {
 						/>
 					))}
 				</div>
+				{addBtn}
 
 				<div className='header'>Education</div>
 				<div className='exp-content'>
@@ -121,6 +129,7 @@ export default class Experience extends Component {
 						/>
 					))}
 				</div>
+				{addBtn}
 
 				<div className='header'>Skills</div>
 				<div className='exp-content'>
@@ -138,6 +147,7 @@ export default class Experience extends Component {
 						))}
 					</ul>
 				</div>
+				{addBtnSkills}
 
 				<div className='header'>Hobbies</div>
 				<div className='exp-content'>{hobbies}</div>

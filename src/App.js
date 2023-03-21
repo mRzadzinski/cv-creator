@@ -16,6 +16,7 @@ import './styles/PersonalInfo/About.scss';
 import './styles/PersonalInfo/ContactInfo.scss';
 import './styles/Experience/Job.scss';
 import './styles/Experience/Skills.scss';
+import './styles/Experience/addBtn.scss';
 import './styles/options-bar/buttons.scss';
 import './styles/options-bar/icons.scss';
 import './styles/edit-data/EditBtns.scss';

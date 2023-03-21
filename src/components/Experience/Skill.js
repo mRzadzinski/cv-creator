@@ -8,7 +8,7 @@ export default class Skill extends Component {
 	}
 
 	render() {
-		const { userData, editMode, updateData, expType, expIndex } = this.props;
+		const { userData, editMode, updateData, expIndex } = this.props;
 
 		let skillDefaultInput;
         let skillDefault;
