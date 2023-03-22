@@ -48,7 +48,7 @@ export default class Experience extends Component {
 	}
 
 	render() {
-		const { userData, updateData, addData } = this.props;
+		const { userData, updateData, addData, deleteData } = this.props;
 		const { editMode } = this.state;
 
 		let cornerButton;
@@ -116,6 +116,7 @@ export default class Experience extends Component {
 							updateData={updateData}
 							expType='jobs'
 							expIndex={index}
+							deleteData={deleteData}
 						/>
 					))}
 				</div>
@@ -131,6 +132,7 @@ export default class Experience extends Component {
 							updateData={updateData}
 							expType='education'
 							expIndex={index}
+							deleteData={deleteData}
 						/>
 					))}
 				</div>
@@ -147,6 +149,7 @@ export default class Experience extends Component {
 									editMode={editMode}
 									updateData={updateData}
 									expIndex={index}
+									deleteData={deleteData}
 								/>
 							</li>
 						))}

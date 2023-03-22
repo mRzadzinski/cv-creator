@@ -1,12 +1,12 @@
 .Job {
+	position: relative;
 	margin: 0 0 20px 0;
-
 	font-size: 20px;
 }
 
 .job-info {
 	display: flex;
-	justify-content: space-between;
+	gap: 5px;
 
 	margin: 5px 0 5px 0;
 
@@ -30,7 +30,7 @@
 }
 
 #company-input {
-	width: 345px;
+	width: 335px;
 	height: 20px;
 	font-size: 23px;
 }
@@ -38,17 +38,17 @@
 #position-input,
 #period-input,
 #location-input {
-	width: 345px;
+	width: 335px;
 	height: 18px;
 	font-size: 20px;
 }
 
 #location-input,
 #period-input {
-	width: 155px;
+	width: 145px;
 }
 
 #description-input {
-	width: 520px;
+	width: 500px;
 	font-size: 18px;
 }

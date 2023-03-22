@@ -20,6 +20,7 @@ import './styles/Experience/addBtn.scss';
 import './styles/options-bar/buttons.scss';
 import './styles/options-bar/icons.scss';
 import './styles/edit-data/EditBtns.scss';
+import '/Users/Coding/repos/cv-creator/src/styles/edit-data/DeleteBtn.scss';
 
 class App extends Component {
 	constructor(props) {
@@ -38,6 +39,7 @@ class App extends Component {
 		this.renderDemo = this.renderDemo.bind(this);
 		this.updateData = this.updateData.bind(this);
 		this.addData = this.addData.bind(this);
+		this.deleteData = this.deleteData.bind(this);
 	}
 
 	renderDemo() {
@@ -101,8 +103,9 @@ class App extends Component {
 
 	deleteData(propName, index) {
 		const stateCopy = Object.assign({}, this.state);
+		console.log(index, propName)
 
-		stateCopy.userData[propName].splice(index, 1);
+		// Filter method, add ID to all array elements, convert skill array to obj array with IDs
 
 		this.setState({
 			...stateCopy,
@@ -127,6 +130,7 @@ class App extends Component {
 						ref={this.PersonalInfoRef}
 					/>
 					<Experience
+						deleteData={this.deleteData}
 						userData={userData}
 						updateData={this.updateData}
 						addData={this.addData}

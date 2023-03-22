@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import DeleteBtn from '../edit-data/DeleteBtn';
 
 export default class Skill extends Component {
 	constructor(props) {
@@ -8,19 +9,20 @@ export default class Skill extends Component {
 	}
 
 	render() {
-		const { userData, editMode, updateData, expIndex } = this.props;
+		const { userData, editMode, updateData, deleteData, expIndex } = this.props;
 
 		let skillDefaultInput;
-        let skillDefault;
+		let skillDefault;
 		if (userData !== '') {
 			skillDefaultInput = userData;
-            skillDefault = userData;
+			skillDefault = userData;
 		} else {
-            skillDefaultInput = '';
+			skillDefaultInput = '';
 			skillDefault = 'Your amazing skill';
 		}
 
 		let skill;
+		let deleteBtn;
 		if (editMode) {
 			skill = (
 				<input
@@ -34,10 +36,19 @@ export default class Skill extends Component {
 					}
 				/>
 			);
+			deleteBtn = (
+				<DeleteBtn
+					dataPropName='skills'
+					deleteData={deleteData}
+					index={expIndex}
+					id='delete-skill-btn'
+				/>
+			);
 		} else {
 			skill = <span>{skillDefault}</span>;
+			deleteBtn = null
 		}
 
-		return <div>{skill}</div>;
+		return <div className='skill'>{skill}{deleteBtn}</div>;
 	}
 }

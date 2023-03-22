@@ -1,0 +1,44 @@
+.delete-btn {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    width: 40px;
+    height: 40px;
+
+    box-sizing: border-box;
+    border: solid 2px black;
+    border-radius: 10px;
+
+    background-color: rgb(251, 140, 140);
+
+    transform: scale(.8);
+    cursor: pointer;
+
+
+    opacity: .5;
+
+    &:hover {
+        opacity: 1;
+    }
+
+}
+
+.delete-job-btn {
+    position: absolute;
+    top: 44%;
+    right: -25px;
+}
+
+.delete-skill-btn {
+    position: absolute;
+    top: 2px;
+    right: 180px;
+
+    transform: scale(.68);
+}
+
+.delete-icon {
+    font-size: 30px;
+    color: black;
+}

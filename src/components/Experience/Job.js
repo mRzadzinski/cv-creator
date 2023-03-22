@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import DeleteBtn from '../edit-data/DeleteBtn';
 
 export default class Job extends Component {
 	constructor(props) {
@@ -12,7 +13,7 @@ export default class Job extends Component {
 	}
 
 	render() {
-		const { userData, editMode, updateData, expType, expIndex } = this.props;
+		const { userData, editMode, updateData, deleteData, expType, expIndex } = this.props;
 
 		let companyDefaultInput;
 		let companyDefault;
@@ -81,6 +82,7 @@ export default class Job extends Component {
 		let position;
 		let location;
 		let description;
+		let deleteBtn;
 		if (editMode) {
 			company = (
 				<input
@@ -167,6 +169,7 @@ export default class Job extends Component {
 					}
 				/>
 			);
+			deleteBtn = <DeleteBtn dataPropName={expType} index={expIndex} id='delete-job-btn' deleteData={deleteData} />
 		} else {
 			company = <div className='company left'>{companyDefault}</div>;
 			period = <div className='period right'>{periodDefault}</div>;
@@ -175,6 +178,7 @@ export default class Job extends Component {
 			description = (
 				<div className='job-description'>{descriptionDefault}</div>
 			);
+			deleteBtn = null;
 		}
 
 		return (
@@ -188,6 +192,7 @@ export default class Job extends Component {
 					{location}
 				</div>
 				{description}
+				{deleteBtn}
 			</div>
 		);
 	}
