@@ -8,10 +8,10 @@ export default class AddBtn extends Component {
 	}
 
 	render() {
-		const { id } = this.props;
+		const { id, addData, addDataParam } = this.props;
 
 		return (
-			<div className='addBtn' onClick={() => null} id={id}>
+			<div className='addBtn' onClick={() => addData(addDataParam)} id={id}>
 				<FontAwesomeIcon icon={faPlus} className='add-icon' />
 			</div>
 		);

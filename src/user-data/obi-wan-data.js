@@ -55,6 +55,13 @@ const obiWanInfo = {
 		'Telepathy',
 	],
 	hobbies: 'Desert gazing, coaching intergalactic heroes, playing with my dog.',
+	jobBoilerplate: {
+		company: '',
+		position: '',
+		location: '',
+		period: '',
+		description: '',
+	},
 };
 
 export default obiWanInfo;

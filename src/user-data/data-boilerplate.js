@@ -31,6 +31,13 @@ const dataBoilerplate = {
 	],
 	skills: [''],
 	hobbies: '',
+	jobBoilerplate: {
+		company: '',
+		position: '',
+		location: '',
+		period: '',
+		description: '',
+	},
 };
 
 export default dataBoilerplate;

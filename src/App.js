@@ -37,6 +37,7 @@ class App extends Component {
 		this.eraseData = this.eraseData.bind(this);
 		this.renderDemo = this.renderDemo.bind(this);
 		this.updateData = this.updateData.bind(this);
+		this.addData = this.addData.bind(this);
 	}
 
 	renderDemo() {
@@ -67,29 +68,45 @@ class App extends Component {
 	}
 
 	updateData(propName, value, arrayName, arrayIndex) {
+		const stateCopy = Object.assign({}, this.state);
+
 		// Deal with nested arrays containing objects
 		if (!this.state.userData[propName]) {
-			const stateCopy = Object.assign({}, this.state);
 			stateCopy.userData[arrayName][arrayIndex][propName] = value;
-			this.setState({
-				...stateCopy,
-			});
 			// Deal with prop arrays
 		} else if (Array.isArray(this.state.userData[propName])) {
-			const stateCopy = Object.assign({}, this.state);
 			stateCopy.userData[propName][arrayIndex] = value;
-			this.setState({
-				...stateCopy,
-			});
 		} else {
-			this.setState({
-				...this.state,
-				userData: {
-					...this.state.userData,
-					[propName]: value,
-				},
-			});
+			stateCopy.userData[propName] = value;
 		}
+		this.setState({
+			...stateCopy,
+		});
+	}
+
+	addData(propName) {
+		const stateCopy = Object.assign({}, this.state);
+
+		if (propName === 'jobs' || propName === 'education') {
+			stateCopy.userData[propName].push(
+				Object.assign({}, stateCopy.userData.jobBoilerplate)
+			);
+		} else if (propName === 'skills') {
+			stateCopy.userData[propName].push('');
+		}
+		this.setState({
+			...stateCopy,
+		});
+	}
+
+	deleteData(propName, index) {
+		const stateCopy = Object.assign({}, this.state);
+
+		stateCopy.userData[propName].splice(index, 1);
+
+		this.setState({
+			...stateCopy,
+		});
 	}
 
 	render() {
@@ -112,6 +129,7 @@ class App extends Component {
 					<Experience
 						userData={userData}
 						updateData={this.updateData}
+						addData={this.addData}
 						ref={this.ExpRef}
 					/>
 				</div>

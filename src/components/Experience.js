@@ -48,22 +48,27 @@ export default class Experience extends Component {
 	}
 
 	render() {
-		const { userData, updateData } = this.props;
+		const { userData, updateData, addData } = this.props;
 		const { editMode } = this.state;
 
 		let cornerButton;
-		let addBtn;
-		let addBtnSkills;
+		let addJobBtn;
+		let addEduBtn;
+		let addSkillBtn;
 		if (editMode) {
 			cornerButton = <SaveBtn toggleEditMode={this.toggleEditMode} />;
-			addBtn = <AddBtn />;
-			addBtnSkills = <AddBtn id='add-skill' />;
+			addJobBtn = <AddBtn addData={addData} addDataParam='jobs' />;
+			addEduBtn = <AddBtn addData={addData} addDataParam='education' />;
+			addSkillBtn = (
+				<AddBtn id='add-skill' addData={addData} addDataParam='skills' />
+			);
 		} else {
 			cornerButton = (
 				<EditBtn toggleEditMode={this.toggleEditMode} ref={this.editBtnRef} />
 			);
-			addBtn = null;
-			addBtnSkills = null;
+			addJobBtn = null;
+			addEduBtn = null;
+			addSkillBtn = null;
 		}
 
 		let hobbiesDefaultInput;
@@ -114,7 +119,7 @@ export default class Experience extends Component {
 						/>
 					))}
 				</div>
-				{addBtn}
+				{addJobBtn}
 
 				<div className='header'>Education</div>
 				<div className='exp-content'>
@@ -129,7 +134,7 @@ export default class Experience extends Component {
 						/>
 					))}
 				</div>
-				{addBtn}
+				{addEduBtn}
 
 				<div className='header'>Skills</div>
 				<div className='exp-content'>
@@ -147,7 +152,7 @@ export default class Experience extends Component {
 						))}
 					</ul>
 				</div>
-				{addBtnSkills}
+				{addSkillBtn}
 
 				<div className='header'>Hobbies</div>
 				<div className='exp-content'>{hobbies}</div>
