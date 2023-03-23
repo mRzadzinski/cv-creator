@@ -27,8 +27,8 @@ export default class Options extends Component {
 					zoom_in
 				</span>
 				<button onClick={() => this.scaleApp(1)} className='button'>100%</button>
-				<button onClick={() => this.scaleApp(.75)} className='button'>75%</button>
-				<button onClick={() => this.scaleApp(.5)} className='button' id='fifty-button'>
+				<button onClick={() => this.scaleApp(.7)} className='button'>70%</button>
+				<button onClick={() => this.scaleApp(.55)} className='button' id='fifty-button'>
 					50%
 				</button>
 
