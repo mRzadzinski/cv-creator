@@ -27,7 +27,8 @@ class App extends Component {
 		super(props);
 
 		this.state = {
-			userData: Object.assign({}, obiWanInfo),
+			// Deep clone object with JSON methods
+			userData: JSON.parse(JSON.stringify(obiWanInfo)),
 		};
 
 		this.AppRef = React.createRef();
@@ -44,7 +45,7 @@ class App extends Component {
 
 	renderDemo() {
 		this.setState({
-			userData: Object.assign({}, obiWanInfo),
+			userData: JSON.parse(JSON.stringify(obiWanInfo)),
 		});
 
 		if (this.PersonalInfoRef.current.state.editMode) {
@@ -55,8 +56,9 @@ class App extends Component {
 	}
 
 	eraseData() {
+		console.log(dataBoilerplate)
 		this.setState({
-			userData: Object.assign({}, dataBoilerplate),
+			userData: JSON.parse(JSON.stringify(dataBoilerplate)),
 		});
 
 		if (this.PersonalInfoRef.current.state.editMode) {
@@ -70,14 +72,12 @@ class App extends Component {
 	}
 
 	updateData(propName, newValue, propToUpdate, id) {
-		const stateCopy = Object.assign({}, this.state);
+		const stateCopy = JSON.parse(JSON.stringify(this.state));
 
 		// Deal with prop arrays containing objects
 		if (Array.isArray(this.state.userData[propName])) {
-			console.log(id);
 			stateCopy.userData[propName].forEach((obj) => {
 				if (obj.id === id) {
-					console.log(obj, obj[propToUpdate]);
 					obj[propToUpdate] = newValue;
 				}
 			});
@@ -90,15 +90,15 @@ class App extends Component {
 	}
 
 	addData(propName) {
-		const stateCopy = Object.assign({}, this.state);
+		const stateCopy = JSON.parse(JSON.stringify(this.state));
 
 		if (propName === 'jobs' || propName === 'education') {
 			stateCopy.userData[propName].push(
-				Object.assign({}, stateCopy.userData.jobBoilerplate)
+				JSON.parse(JSON.stringify(stateCopy.userData.jobBoilerplate))
 			);
 		} else if (propName === 'skills') {
 			stateCopy.userData[propName].push(
-				Object.assign({}, stateCopy.userData.skillBoilerplate)
+				JSON.parse(JSON.stringify(stateCopy.userData.skillBoilerplate))
 			);
 		}
 
@@ -113,10 +113,11 @@ class App extends Component {
 	}
 
 	deleteData(propName, id) {
-		const stateCopy = Object.assign({}, this.state);
+		const stateCopy = JSON.parse(JSON.stringify(this.state));
 
-		stateCopy.userData[propName] = stateCopy.userData[propName].filter(el => el.id !== id);
-		console.log(stateCopy.userData[propName])
+		stateCopy.userData[propName] = stateCopy.userData[propName].filter(
+			(el) => el.id !== id
+		);
 
 		this.setState({
 			...stateCopy,
