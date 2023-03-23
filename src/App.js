@@ -112,13 +112,15 @@ class App extends Component {
 		});
 	}
 
-	deleteData(propName, index) {
-		// const stateCopy = Object.assign({}, this.state);
-		// stateCopy.userData[propName].splice(index, 1);
-		// this.setState({
-		// 	...stateCopy,
-		// });
-		// Filter method, add ID to all array elements, convert skill array to obj array with IDs
+	deleteData(propName, id) {
+		const stateCopy = Object.assign({}, this.state);
+
+		stateCopy.userData[propName] = stateCopy.userData[propName].filter(el => el.id !== id);
+		console.log(stateCopy.userData[propName])
+
+		this.setState({
+			...stateCopy,
+		});
 	}
 
 	render() {
