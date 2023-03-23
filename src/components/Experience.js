@@ -108,15 +108,15 @@ export default class Experience extends Component {
 				<div className='header'>Experience</div>
 
 				<div className='exp-content'>
-					{userData.jobs.map((job, index) => (
+					{userData.jobs.map((job) => (
 						<Job
-							key={index}
-							userData={userData.jobs[index]}
 							editMode={editMode}
 							updateData={updateData}
-							expType='jobs'
-							expIndex={index}
 							deleteData={deleteData}
+							propName='jobs'
+							userData={job}
+							id={job.id}
+							key={job.id}
 						/>
 					))}
 				</div>
@@ -124,15 +124,15 @@ export default class Experience extends Component {
 
 				<div className='header'>Education</div>
 				<div className='exp-content'>
-					{userData.education.map((edu, index) => (
+					{userData.education.map((edu) => (
 						<Job
-							key={index}
-							userData={userData.education[index]}
 							editMode={editMode}
 							updateData={updateData}
-							expType='education'
-							expIndex={index}
 							deleteData={deleteData}
+							propName='education'
+							userData={edu}
+							id={edu.id}
+							key={edu.id}
 						/>
 					))}
 				</div>
@@ -141,15 +141,15 @@ export default class Experience extends Component {
 				<div className='header'>Skills</div>
 				<div className='exp-content'>
 					<ul className='skills'>
-						{userData.skills.map((skill, index) => (
-							<li className='skill' key={index}>
+						{userData.skills.map((skillObj) => (
+							<li className='skill' key={skillObj.id}>
 								<Skill
-									key={index}
-									userData={userData.skills[index]}
 									editMode={editMode}
 									updateData={updateData}
-									expIndex={index}
 									deleteData={deleteData}
+									userData={skillObj.skill}
+									id={skillObj.id}
+									key={skillObj.id}
 								/>
 							</li>
 						))}

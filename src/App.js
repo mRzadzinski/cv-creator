@@ -69,17 +69,20 @@ class App extends Component {
 		this.PhotoRef.current.removeUserPhoto();
 	}
 
-	updateData(propName, value, arrayName, arrayIndex) {
+	updateData(propName, newValue, propToUpdate, id) {
 		const stateCopy = Object.assign({}, this.state);
 
-		// Deal with nested arrays containing objects
-		if (!this.state.userData[propName]) {
-			stateCopy.userData[arrayName][arrayIndex][propName] = value;
-			// Deal with prop arrays
-		} else if (Array.isArray(this.state.userData[propName])) {
-			stateCopy.userData[propName][arrayIndex] = value;
+		// Deal with prop arrays containing objects
+		if (Array.isArray(this.state.userData[propName])) {
+			console.log(id);
+			stateCopy.userData[propName].forEach((obj) => {
+				if (obj.id === id) {
+					console.log(obj, obj[propToUpdate]);
+					obj[propToUpdate] = newValue;
+				}
+			});
 		} else {
-			stateCopy.userData[propName] = value;
+			stateCopy.userData[propName] = newValue;
 		}
 		this.setState({
 			...stateCopy,
@@ -94,22 +97,28 @@ class App extends Component {
 				Object.assign({}, stateCopy.userData.jobBoilerplate)
 			);
 		} else if (propName === 'skills') {
-			stateCopy.userData[propName].push('');
+			stateCopy.userData[propName].push(
+				Object.assign({}, stateCopy.userData.skillBoilerplate)
+			);
 		}
+
+		// Set id for new element
+		const arrLength = stateCopy.userData[propName].length;
+		const prevID = stateCopy.userData[propName][arrLength - 2].id;
+		stateCopy.userData[propName][arrLength - 1].id = prevID + 1;
+
 		this.setState({
 			...stateCopy,
 		});
 	}
 
 	deleteData(propName, index) {
-		const stateCopy = Object.assign({}, this.state);
-		console.log(index, propName)
-
+		// const stateCopy = Object.assign({}, this.state);
+		// stateCopy.userData[propName].splice(index, 1);
+		// this.setState({
+		// 	...stateCopy,
+		// });
 		// Filter method, add ID to all array elements, convert skill array to obj array with IDs
-
-		this.setState({
-			...stateCopy,
-		});
 	}
 
 	render() {

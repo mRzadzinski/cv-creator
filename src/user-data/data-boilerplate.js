@@ -18,6 +18,7 @@ const dataBoilerplate = {
 			location: '',
 			period: '',
 			description: '',
+			id: 1,
 		},
 	],
 	education: [
@@ -27,9 +28,10 @@ const dataBoilerplate = {
 			location: '',
 			period: '',
 			description: '',
+			id: 1,
 		},
 	],
-	skills: [''],
+	skills: [{ skill: '', id: 1 }],
 	hobbies: '',
 	jobBoilerplate: {
 		company: '',
@@ -37,7 +39,9 @@ const dataBoilerplate = {
 		location: '',
 		period: '',
 		description: '',
+		id: 1,
 	},
+	skillBoilerplate: { skill: '', id: 1 },
 };
 
 export default dataBoilerplate;

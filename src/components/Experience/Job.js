@@ -13,18 +13,19 @@ export default class Job extends Component {
 	}
 
 	render() {
-		const { userData, editMode, updateData, deleteData, expType, expIndex } = this.props;
+		const { userData, editMode, updateData, deleteData, propName, id } = this.props;
 
 		let companyDefaultInput;
 		let companyDefault;
+
 		if (userData.company !== '') {
 			companyDefaultInput = userData.company;
 			companyDefault = userData.company;
 		} else {
 			companyDefaultInput = '';
-			if (expType === 'jobs') {
+			if (propName === 'jobs') {
 				companyDefault = 'Company Name';
-			} else if (expType === 'education') {
+			} else if (propName === 'education') {
 				companyDefault = 'School Name';
 			}
 		}
@@ -46,9 +47,9 @@ export default class Job extends Component {
 			positionDefault = userData.position;
 		} else {
 			positionDefaultInput = '';
-			if (expType === 'jobs') {
+			if (propName === 'jobs') {
 				positionDefault = 'Job Title';
-			} else if (expType === 'education') {
+			} else if (propName === 'education') {
 				positionDefault = 'Course Name / Profile';
 			}
 		}
@@ -70,9 +71,9 @@ export default class Job extends Component {
 			descriptionDefault = userData.description;
 		} else {
 			descriptionDefaultInput = '';
-			if (expType === 'jobs') {
-				descriptionDefault = 'Description of this job.';
-			} else if (expType === 'education') {
+			if (propName === 'jobs') {
+				descriptionDefault = '';
+			} else if (propName === 'education') {
 				descriptionDefault = '';
 			}
 		}
@@ -88,15 +89,15 @@ export default class Job extends Component {
 				<input
 					id='company-input'
 					type='text'
-					placeholder='Company'
+					placeholder={companyDefault}
 					ref={this.companyInput}
 					defaultValue={companyDefaultInput}
 					onChange={() =>
 						updateData(
-							'company',
+							propName,
 							this.companyInput.current.value,
-							expType,
-							expIndex
+							'company',
+							id
 						)
 					}
 				/>
@@ -110,10 +111,10 @@ export default class Job extends Component {
 					defaultValue={periodDefaultInput}
 					onChange={() =>
 						updateData(
-							'period',
+							propName,
 							this.periodInput.current.value,
-							expType,
-							expIndex
+							'period', 
+							id
 						)
 					}
 				/>
@@ -122,15 +123,15 @@ export default class Job extends Component {
 				<input
 					id='position-input'
 					type='text'
-					placeholder='Position'
+					placeholder={positionDefault}
 					ref={this.positionInput}
 					defaultValue={positionDefaultInput}
 					onChange={() =>
 						updateData(
-							'position',
+							propName,
 							this.positionInput.current.value,
-							expType,
-							expIndex
+							'position',
+							id
 						)
 					}
 				/>
@@ -144,10 +145,10 @@ export default class Job extends Component {
 					defaultValue={locationDefaultInput}
 					onChange={() =>
 						updateData(
-							'location',
+							propName,
 							this.locationInput.current.value,
-							expType,
-							expIndex
+							'location',
+							id
 						)
 					}
 				/>
@@ -161,15 +162,15 @@ export default class Job extends Component {
 					defaultValue={descriptionDefaultInput}
 					onChange={() =>
 						updateData(
-							'description',
+							propName,
 							this.descriptionInput.current.value,
-							expType,
-							expIndex
+							'description',
+							id
 						)
 					}
 				/>
 			);
-			deleteBtn = <DeleteBtn dataPropName={expType} index={expIndex} id='delete-job-btn' deleteData={deleteData} />
+			deleteBtn = <DeleteBtn dataPropName={propName} id={id} styleName='delete-job-btn' deleteData={deleteData} />
 		} else {
 			company = <div className='company left'>{companyDefault}</div>;
 			period = <div className='period right'>{periodDefault}</div>;

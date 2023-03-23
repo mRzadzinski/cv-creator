@@ -9,7 +9,7 @@ export default class Skill extends Component {
 	}
 
 	render() {
-		const { userData, editMode, updateData, deleteData, expIndex } = this.props;
+		const { userData, editMode, updateData, deleteData, id } = this.props;
 
 		let skillDefaultInput;
 		let skillDefault;
@@ -32,7 +32,7 @@ export default class Skill extends Component {
 					ref={this.skillInput}
 					defaultValue={skillDefaultInput}
 					onChange={() =>
-						updateData('skills', this.skillInput.current.value, null, expIndex)
+						updateData('skills', this.skillInput.current.value, 'skill', id)
 					}
 				/>
 			);
@@ -40,8 +40,8 @@ export default class Skill extends Component {
 				<DeleteBtn
 					dataPropName='skills'
 					deleteData={deleteData}
-					index={expIndex}
-					id='delete-skill-btn'
+					id={id}
+					styleName='delete-skill-btn'
 				/>
 			);
 		} else {

@@ -1,12 +1,13 @@
 .Job {
 	position: relative;
+	width: 515px;
 	margin: 0 0 20px 0;
 	font-size: 20px;
 }
 
 .job-info {
 	display: flex;
-	gap: 5px;
+	justify-content: space-between;
 
 	margin: 5px 0 5px 0;
 
