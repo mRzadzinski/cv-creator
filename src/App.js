@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Component, createElement } from 'react';
 import obiWanInfo from './user-data/obi-wan-data';
 import dataBoilerplate from './user-data/data-boilerplate';
 import Experience from './components/Experience';
@@ -21,6 +21,8 @@ import './styles/options-bar/buttons.scss';
 import './styles/options-bar/icons.scss';
 import './styles/edit-data/EditBtns.scss';
 import '/Users/Coding/repos/cv-creator/src/styles/edit-data/DeleteBtn.scss';
+import html2canvas from 'html2canvas';
+import { jsPDF } from 'jspdf';
 
 class App extends Component {
 	constructor(props) {
@@ -35,12 +37,15 @@ class App extends Component {
 		this.PhotoRef = React.createRef();
 		this.PersonalInfoRef = React.createRef();
 		this.ExpRef = React.createRef();
+		this.cvRef = React.createRef();
+		this.OptionsRef = React.createRef();
 
 		this.eraseData = this.eraseData.bind(this);
 		this.renderDemo = this.renderDemo.bind(this);
 		this.updateData = this.updateData.bind(this);
 		this.addData = this.addData.bind(this);
 		this.deleteData = this.deleteData.bind(this);
+		this.renderPDF = this.renderPDF.bind(this);
 	}
 
 	renderDemo() {
@@ -56,7 +61,6 @@ class App extends Component {
 	}
 
 	eraseData() {
-		console.log(dataBoilerplate)
 		this.setState({
 			userData: JSON.parse(JSON.stringify(dataBoilerplate)),
 		});
@@ -124,6 +128,26 @@ class App extends Component {
 		});
 	}
 
+	renderPDF() {
+		// Set default scale to improve PDF quality
+		this.OptionsRef.current.scaleApp(1);
+
+		html2canvas(this.AppRef.current.children[1]).then((canvas) => {
+			canvas.style.visibility = 'hidden';
+			canvas.setAttribute('download', '');
+
+			// Remove px from the string
+			let canvasHeight = this.cvRef.current.offsetHeight;
+			let canvasWidth = this.cvRef.current.offsetWidth;
+
+			let imgData = canvas.toDataURL('image/jpeg', 1);
+			let pdf = new jsPDF('p', 'pt', [canvasWidth, canvasHeight]);
+
+			pdf.addImage(imgData, 'JPG', 0, 0, canvasWidth, canvasHeight);
+			pdf.save('my-cv.pdf')
+		});
+	}
+
 	render() {
 		const { userData } = this.state;
 
@@ -132,9 +156,11 @@ class App extends Component {
 				<Options
 					eraseData={this.eraseData}
 					renderDemo={this.renderDemo}
+					renderPDF={this.renderPDF}
 					AppRef={this.AppRef}
+					ref={this.OptionsRef}
 				/>
-				<div className='cv'>
+				<div className='cv' ref={this.cvRef}>
 					<Photo ref={this.PhotoRef} />
 					<PersonalInfo
 						userData={userData}

@@ -12,7 +12,7 @@ export default class Options extends Component {
 	}
 
 	render() {
-		const { eraseData, renderDemo } = this.props;
+		const { eraseData, renderDemo, renderPDF } = this.props;
 
 		return (
 			<div className='Options'>
@@ -35,7 +35,7 @@ export default class Options extends Component {
 				<span className='material-symbols-outlined' id='download-icon'>
 					download
 				</span>
-				<button className='button pdf-btn'>PDF</button>
+				<button className='button pdf-btn' onClick={() => renderPDF()}>PDF</button>
 			</div>
 		);
 	}

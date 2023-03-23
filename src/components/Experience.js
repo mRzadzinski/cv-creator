@@ -10,7 +10,7 @@ export default class Experience extends Component {
 		super(props);
 
 		this.state = {
-			editMode: true,
+			editMode: false,
 		};
 
 		this.editBtnRef = React.createRef();
