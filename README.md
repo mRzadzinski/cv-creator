@@ -22,7 +22,7 @@ Star Wars themed CV creator with demo data to play with.
 
 
 ## Skills practiced
-* React app architecture - my first react app
+* React app architecture (my first react app)
 * Working with class components
 * Usage of props and state
 * Dealing with unidirectional data flow
