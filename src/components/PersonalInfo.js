@@ -1,4 +1,4 @@
-import React, { Children, Component } from 'react';
+import React, { Component } from 'react';
 import Name from './PersonalInfo/Name';
 import JobTitle from './PersonalInfo/JobTitle';
 import About from './PersonalInfo/About';

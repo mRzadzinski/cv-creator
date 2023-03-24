@@ -137,10 +137,6 @@ class App extends Component {
 		this.OptionsRef.current.scaleApp(1);
 
 		html2canvas(this.AppRef.current.children[1]).then((canvas) => {
-			canvas.style.visibility = 'hidden';
-			canvas.setAttribute('download', '');
-
-			// Remove px from the string
 			let canvasHeight = this.cvRef.current.offsetHeight;
 			let canvasWidth = this.cvRef.current.offsetWidth;
 
