@@ -41,7 +41,7 @@ export default class About extends Component {
 
 		return (
 			<div className='About'>
-				<div className='about'>ABOUT</div>
+				<div className='about'>About</div>
 				{about}
 			</div>
 		);

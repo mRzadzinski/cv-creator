@@ -108,8 +108,12 @@ class App extends Component {
 
 		// Set id for new element
 		const arrLength = stateCopy.userData[propName].length;
-		const prevID = stateCopy.userData[propName][arrLength - 2].id;
-		stateCopy.userData[propName][arrLength - 1].id = prevID + 1;
+		let prevElement =  stateCopy.userData[propName][arrLength - 2]
+		if (!prevElement) {
+			stateCopy.userData[propName][arrLength - 1].id = 1;
+		} else {
+			stateCopy.userData[propName][arrLength - 1].id = prevElement.id + 1;
+		}
 
 		this.setState({
 			...stateCopy,
@@ -144,7 +148,7 @@ class App extends Component {
 			let pdf = new jsPDF('p', 'pt', [canvasWidth, canvasHeight]);
 
 			pdf.addImage(imgData, 'JPG', 0, 0, canvasWidth, canvasHeight);
-			pdf.save('my-cv.pdf')
+			pdf.save('my-cv.pdf');
 		});
 	}
 
