@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import '../../styles/edit-data/EditBtns.scss';
 
 export default class SaveBtn extends Component {
 	constructor(props) {

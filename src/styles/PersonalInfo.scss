@@ -1,13 +1,13 @@
 .PersonalInfo {
-    display: flex;
-    flex-direction: column;
+	display: flex;
+	flex-direction: column;
 
-    position: relative;
+	position: relative;
 
-    padding: 0 20px 0 25px;
-    background-color: #C2B5AC;
+	padding: 0 20px 0 25px;
+	background-color: #c2b5ac;
 
-    &:hover {
-        filter: brightness(.95);
-    }
+	&:hover {
+		filter: brightness(0.95);
+	}
 }

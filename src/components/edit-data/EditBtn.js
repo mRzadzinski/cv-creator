@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import '../../styles/edit-data/EditBtns.scss';
 
 export default class EditBtn extends Component {
 	constructor(props) {
@@ -11,7 +12,11 @@ export default class EditBtn extends Component {
 		const { toggleEditMode } = this.props;
 
 		return (
-			<div className='EditBtn' onClick={() => toggleEditMode()} ref={this.editBtnRef}>
+			<div
+				className='EditBtn'
+				onClick={() => toggleEditMode()}
+				ref={this.editBtnRef}
+			>
 				<span className='material-symbols-outlined' id='edit-sign' title='Edit'>
 					edit
 				</span>

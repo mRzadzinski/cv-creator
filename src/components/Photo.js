@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import obiWanAvatar from '../img/avatar-sw.png';
 import uploadImg from '../img/upload-img.svg';
+import '../styles/Photo.scss';
 
 export default class Photo extends Component {
 	constructor(props) {
@@ -68,31 +69,25 @@ export default class Photo extends Component {
 	render() {
 		const { userPhoto } = this.state;
 
-		const avatar = (
-			<img id='avatar' src={userPhoto} alt='Avatar' ref={this.avatarRef} />
-		);
-
-		const uploader = (
-			<div className='upload-photo hidden' ref={this.uploaderRef}>
-				<label className='custom-file-upload'>
-					<img src={uploadImg} alt='upload-img' id='upload-img' />
-					<input
-						onChange={() => this.readFile(this.inputRef.current.files[0])}
-						type='file'
-						ref={this.inputRef}
-					/>
-					<div className='upload-instruction'>PHOTO</div>
-				</label>
-			</div>
-		);
 		return (
 			<div
 				className='Photo'
 				onMouseEnter={() => this.displayUploader()}
 				onMouseLeave={() => this.hideUploader()}
 			>
-				{avatar}
-				{uploader}
+				<img id='avatar' src={userPhoto} alt='Avatar' ref={this.avatarRef} />
+
+				<div className='upload-photo hidden' ref={this.uploaderRef}>
+					<label className='custom-file-upload'>
+						<img src={uploadImg} alt='upload-img' id='upload-img' />
+						<input
+							onChange={() => this.readFile(this.inputRef.current.files[0])}
+							type='file'
+							ref={this.inputRef}
+						/>
+						<div className='upload-instruction'>PHOTO</div>
+					</label>
+				</div>
 			</div>
 		);
 	}

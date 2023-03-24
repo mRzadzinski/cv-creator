@@ -1,11 +1,12 @@
 import React, { Component } from 'react';
+import '../../styles/PersonalInfo/Name.scss';
 
 export default class Name extends Component {
 	constructor(props) {
 		super(props);
 
-		this.nameInputRef = React.createRef()
-		this.surnameInputRef = React.createRef()
+		this.nameInputRef = React.createRef();
+		this.surnameInputRef = React.createRef();
 	}
 
 	render() {
@@ -42,7 +43,9 @@ export default class Name extends Component {
 			surname = (
 				<input
 					className='name-input surname-input'
-					onChange={() => updateData('surname', this.surnameInputRef.current.value)}
+					onChange={() =>
+						updateData('surname', this.surnameInputRef.current.value)
+					}
 					type='text'
 					defaultValue={surnameDefaultValue}
 					placeholder='Surname'

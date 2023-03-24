@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import '../../styles/PersonalInfo/About.scss';
 
 export default class About extends Component {
 	constructor(props) {
@@ -22,7 +23,7 @@ export default class About extends Component {
 
 		let about;
 		if (editMode) {
-			about = 
+			about = (
 				<textarea
 					className='about-input'
 					rows={8}
@@ -31,6 +32,7 @@ export default class About extends Component {
 					defaultValue={aboutDefaultValue}
 					onChange={() => updateData('about', this.aboutInputRef.current.value)}
 				/>
+			);
 		} else {
 			if (userData.about !== '') {
 				about = <div className='about-info'>{userData.about}</div>;

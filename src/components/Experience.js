@@ -4,6 +4,9 @@ import Skill from './Experience/Skill';
 import EditBtn from './edit-data/EditBtn';
 import SaveBtn from './edit-data/SaveBtn';
 import AddBtn from './edit-data/AddBtn';
+import '../styles/Experience.scss';
+import '../styles/Experience/Job.scss';
+import '../styles/Experience/Skills.scss';
 
 export default class Experience extends Component {
 	constructor(props) {
@@ -51,19 +54,19 @@ export default class Experience extends Component {
 		const { userData, updateData, addData, deleteData } = this.props;
 		const { editMode } = this.state;
 
-		let cornerButton;
+		let editButton;
 		let addJobBtn;
 		let addEduBtn;
 		let addSkillBtn;
 		if (editMode) {
-			cornerButton = <SaveBtn toggleEditMode={this.toggleEditMode} />;
+			editButton = <SaveBtn toggleEditMode={this.toggleEditMode} />;
 			addJobBtn = <AddBtn addData={addData} addDataParam='jobs' />;
 			addEduBtn = <AddBtn addData={addData} addDataParam='education' />;
 			addSkillBtn = (
 				<AddBtn id='add-skill' addData={addData} addDataParam='skills' />
 			);
 		} else {
-			cornerButton = (
+			editButton = (
 				<EditBtn toggleEditMode={this.toggleEditMode} ref={this.editBtnRef} />
 			);
 			addJobBtn = null;
@@ -107,7 +110,7 @@ export default class Experience extends Component {
 			>
 				<div className='header'>Experience</div>
 
-				<div className='exp-content'>
+				<div className='exp-content jobs-div'>
 					{userData.jobs.map((job) => (
 						<Job
 							editMode={editMode}
@@ -123,7 +126,7 @@ export default class Experience extends Component {
 				{addJobBtn}
 
 				<div className='header'>Education</div>
-				<div className='exp-content'>
+				<div className='exp-content education-div'>
 					{userData.education.map((edu) => (
 						<Job
 							editMode={editMode}
@@ -139,7 +142,7 @@ export default class Experience extends Component {
 				{addEduBtn}
 
 				<div className='header'>Skills</div>
-				<div className='exp-content'>
+				<div className='exp-content skills-div'>
 					<ul className='skills'>
 						{userData.skills.map((skillObj) => (
 							<li className='skill' key={skillObj.id}>
@@ -160,7 +163,7 @@ export default class Experience extends Component {
 				<div className='header'>Hobbies</div>
 				<div className='exp-content'>{hobbies}</div>
 
-				{cornerButton}
+				{editButton}
 			</div>
 		);
 	}

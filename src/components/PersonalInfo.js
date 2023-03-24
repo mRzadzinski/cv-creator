@@ -5,6 +5,7 @@ import About from './PersonalInfo/About';
 import ContactInfo from './PersonalInfo/ContactInfo';
 import EditBtn from './edit-data/EditBtn';
 import SaveBtn from './edit-data/SaveBtn';
+import '../styles/PersonalInfo.scss';
 
 export default class PersonalInfo extends Component {
 	constructor(props) {

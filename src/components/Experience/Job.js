@@ -13,7 +13,8 @@ export default class Job extends Component {
 	}
 
 	render() {
-		const { userData, editMode, updateData, deleteData, propName, id } = this.props;
+		const { userData, editMode, updateData, deleteData, propName, id } =
+			this.props;
 
 		let companyDefaultInput;
 		let companyDefault;
@@ -93,12 +94,7 @@ export default class Job extends Component {
 					ref={this.companyInput}
 					defaultValue={companyDefaultInput}
 					onChange={() =>
-						updateData(
-							propName,
-							this.companyInput.current.value,
-							'company',
-							id
-						)
+						updateData(propName, this.companyInput.current.value, 'company', id)
 					}
 				/>
 			);
@@ -110,12 +106,7 @@ export default class Job extends Component {
 					ref={this.periodInput}
 					defaultValue={periodDefaultInput}
 					onChange={() =>
-						updateData(
-							propName,
-							this.periodInput.current.value,
-							'period', 
-							id
-						)
+						updateData(propName, this.periodInput.current.value, 'period', id)
 					}
 				/>
 			);
@@ -170,15 +161,20 @@ export default class Job extends Component {
 					}
 				/>
 			);
-			deleteBtn = <DeleteBtn dataPropName={propName} id={id} styleName='delete-job-btn' deleteData={deleteData} />
+			deleteBtn = (
+				<DeleteBtn
+					dataPropName={propName}
+					id={id}
+					styleName='delete-job-btn'
+					deleteData={deleteData}
+				/>
+			);
 		} else {
 			company = <div className='company left'>{companyDefault}</div>;
 			period = <div className='period right'>{periodDefault}</div>;
 			position = <div className='position left'>{positionDefault}</div>;
 			location = <div className='location right'>{locationDefault}</div>;
-			description = (
-				<div className='job-description'>{descriptionDefault}</div>
-			);
+			description = <div className='job-description'>{descriptionDefault}</div>;
 			deleteBtn = null;
 		}
 

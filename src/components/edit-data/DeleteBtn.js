@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faTrash } from '@fortawesome/free-solid-svg-icons';
+import '../../styles/edit-data/DeleteBtn.scss';
 
 export default class DeleteBtn extends Component {
 	constructor(props) {

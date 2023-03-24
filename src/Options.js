@@ -1,4 +1,7 @@
 import React, { Component } from 'react';
+import './styles/Options.scss';
+import './styles/options-bar/buttons.scss';
+import './styles/options-bar/icons.scss';
 
 export default class Options extends Component {
 	constructor(props) {
@@ -19,6 +22,7 @@ export default class Options extends Component {
 				<button onClick={() => eraseData()} className='button erase-btn'>
 					ERASE
 				</button>
+
 				<button onClick={() => renderDemo()} className='button demo-btn'>
 					DEMO
 				</button>
@@ -26,16 +30,28 @@ export default class Options extends Component {
 				<span className='material-symbols-outlined' id='magnifying-glass'>
 					zoom_in
 				</span>
-				<button onClick={() => this.scaleApp(1)} className='button'>100%</button>
-				<button onClick={() => this.scaleApp(.7)} className='button'>70%</button>
-				<button onClick={() => this.scaleApp(.55)} className='button' id='fifty-button'>
+				<button onClick={() => this.scaleApp(1)} className='button'>
+					100%
+				</button>
+
+				<button onClick={() => this.scaleApp(0.7)} className='button'>
+					70%
+				</button>
+
+				<button
+					onClick={() => this.scaleApp(0.55)}
+					className='button'
+					id='fifty-button'
+				>
 					50%
 				</button>
 
 				<span className='material-symbols-outlined' id='download-icon'>
 					download
 				</span>
-				<button className='button pdf-btn' onClick={() => renderPDF()}>PDF</button>
+				<button className='button pdf-btn' onClick={() => renderPDF()}>
+					PDF
+				</button>
 			</div>
 		);
 	}

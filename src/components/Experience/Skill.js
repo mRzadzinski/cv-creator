@@ -46,9 +46,14 @@ export default class Skill extends Component {
 			);
 		} else {
 			skill = <span>{skillDefault}</span>;
-			deleteBtn = null
+			deleteBtn = null;
 		}
 
-		return <div className='skill'>{skill}{deleteBtn}</div>;
+		return (
+			<div className='skill'>
+				{skill}
+				{deleteBtn}
+			</div>
+		);
 	}
 }

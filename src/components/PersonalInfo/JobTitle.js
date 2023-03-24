@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import '../../styles/PersonalInfo/JobTitle.scss';
 
 export default class JobTitle extends Component {
 	constructor(props) {
@@ -26,7 +27,9 @@ export default class JobTitle extends Component {
 					placeholder='Job Title'
 					ref={this.jobTitleInputRef}
 					defaultValue={jobTitleDefaultValue}
-					onChange={() => updateData('jobTitle', this.jobTitleInputRef.current.value)}
+					onChange={() =>
+						updateData('jobTitle', this.jobTitleInputRef.current.value)
+					}
 				/>
 			);
 		} else {

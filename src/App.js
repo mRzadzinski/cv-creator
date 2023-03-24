@@ -1,28 +1,14 @@
-import React, { Component, createElement } from 'react';
+import React, { Component } from 'react';
 import obiWanInfo from './user-data/obi-wan-data';
 import dataBoilerplate from './user-data/data-boilerplate';
 import Experience from './components/Experience';
 import PersonalInfo from './components/PersonalInfo';
 import Options from './Options';
 import Photo from './components/Photo';
-import './styles/App.scss';
-import './styles/Photo.scss';
-import './styles/PersonalInfo.scss';
-import './styles/Experience.scss';
-import './styles/Options.scss';
-import './styles/PersonalInfo/Name.scss';
-import './styles/PersonalInfo/JobTitle.scss';
-import './styles/PersonalInfo/About.scss';
-import './styles/PersonalInfo/ContactInfo.scss';
-import './styles/Experience/Job.scss';
-import './styles/Experience/Skills.scss';
-import './styles/Experience/addBtn.scss';
-import './styles/options-bar/buttons.scss';
-import './styles/options-bar/icons.scss';
-import './styles/edit-data/EditBtns.scss';
-import '/Users/Coding/repos/cv-creator/src/styles/edit-data/DeleteBtn.scss';
 import html2canvas from 'html2canvas';
 import { jsPDF } from 'jspdf';
+import './styles/App.scss';
+
 
 class App extends Component {
 	constructor(props) {
@@ -108,7 +94,7 @@ class App extends Component {
 
 		// Set id for new element
 		const arrLength = stateCopy.userData[propName].length;
-		let prevElement =  stateCopy.userData[propName][arrLength - 2]
+		const prevElement = stateCopy.userData[propName][arrLength - 2];
 		if (!prevElement) {
 			stateCopy.userData[propName][arrLength - 1].id = 1;
 		} else {
@@ -133,7 +119,7 @@ class App extends Component {
 	}
 
 	renderPDF() {
-		// Set default scale to improve PDF quality
+		// Set default app scale to improve PDF quality
 		this.OptionsRef.current.scaleApp(1);
 
 		html2canvas(this.AppRef.current.children[1]).then((canvas) => {
