@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { useRef, useState } from 'react';
 import obiWanInfo from './user-data/obi-wan-data';
 import dataBoilerplate from './user-data/data-boilerplate';
 import Experience from './components/Experience';
@@ -9,122 +9,100 @@ import html2canvas from 'html2canvas';
 import { jsPDF } from 'jspdf';
 import './styles/App.scss';
 
+const App = () => {
+	// Deep clone object with JSON methods
+	const [userData, setUserData] = useState(
+		JSON.parse(JSON.stringify(obiWanInfo))
+	);
 
-class App extends Component {
-	constructor(props) {
-		super(props);
+	const appRef = useRef(null);
+	const photoRef = useRef(null);
+	const personalInfoRef = useRef(null);
+	const expRef = useRef(null);
+	const cvRef = useRef(null);
+	const optionsRef = useRef(null);
 
-		this.state = {
-			// Deep clone object with JSON methods
-			userData: JSON.parse(JSON.stringify(obiWanInfo)),
-		};
+	function renderDemo() {
+		setUserData(JSON.parse(JSON.stringify(obiWanInfo)));
 
-		this.AppRef = React.createRef();
-		this.PhotoRef = React.createRef();
-		this.PersonalInfoRef = React.createRef();
-		this.ExpRef = React.createRef();
-		this.cvRef = React.createRef();
-		this.OptionsRef = React.createRef();
-
-		this.eraseData = this.eraseData.bind(this);
-		this.renderDemo = this.renderDemo.bind(this);
-		this.updateData = this.updateData.bind(this);
-		this.addData = this.addData.bind(this);
-		this.deleteData = this.deleteData.bind(this);
-		this.renderPDF = this.renderPDF.bind(this);
-	}
-
-	renderDemo() {
-		this.setState({
-			userData: JSON.parse(JSON.stringify(obiWanInfo)),
-		});
-
-		if (this.PersonalInfoRef.current.state.editMode) {
-			this.PersonalInfoRef.current.toggleEditMode();
+		if (personalInfoRef.current.editMode) {
+			personalInfoRef.current.toggleEditMode();
 		}
 
-		this.PhotoRef.current.displayDemo();
+		photoRef.current.displayDemo();
 	}
 
-	eraseData() {
-		this.setState({
-			userData: JSON.parse(JSON.stringify(dataBoilerplate)),
-		});
+	function eraseData() {
+		setUserData(JSON.parse(JSON.stringify(dataBoilerplate)));
 
-		if (this.PersonalInfoRef.current.state.editMode) {
-			this.PersonalInfoRef.current.toggleEditMode();
+		if (personalInfoRef.current.editMode) {
+			personalInfoRef.current.toggleEditMode();
 		}
-		if (this.ExpRef.current.state.editMode) {
-			this.ExpRef.current.toggleEditMode();
+		if (expRef.current.editMode) {
+			expRef.current.toggleEditMode();
 		}
 
-		this.PhotoRef.current.removeUserPhoto();
+		photoRef.current.removeUserPhoto();
 	}
 
-	updateData(propName, newValue, propToUpdate, id) {
-		const stateCopy = JSON.parse(JSON.stringify(this.state));
+	function updateData(propName, newValue, propToUpdate, id) {
+		const userDataCopy = JSON.parse(JSON.stringify(userData));
 
 		// Deal with prop arrays containing objects
-		if (Array.isArray(this.state.userData[propName])) {
-			stateCopy.userData[propName].forEach((obj) => {
+		if (Array.isArray(userData[propName])) {
+			userDataCopy[propName].forEach((obj) => {
 				if (obj.id === id) {
 					obj[propToUpdate] = newValue;
 				}
 			});
 		} else {
-			stateCopy.userData[propName] = newValue;
+			userDataCopy[propName] = newValue;
 		}
-		this.setState({
-			...stateCopy,
-		});
+		setUserData(userDataCopy);
 	}
 
-	addData(propName) {
-		const stateCopy = JSON.parse(JSON.stringify(this.state));
+	function addData(propName) {
+		const userDataCopy = JSON.parse(JSON.stringify(userData));
 
 		if (propName === 'jobs' || propName === 'education') {
-			stateCopy.userData[propName].push(
-				JSON.parse(JSON.stringify(stateCopy.userData.jobBoilerplate))
+			userDataCopy[propName].push(
+				JSON.parse(JSON.stringify(userDataCopy.jobBoilerplate))
 			);
 		} else if (propName === 'skills') {
-			stateCopy.userData[propName].push(
-				JSON.parse(JSON.stringify(stateCopy.userData.skillBoilerplate))
+			userDataCopy[propName].push(
+				JSON.parse(JSON.stringify(userDataCopy.skillBoilerplate))
 			);
 		}
 
 		// Set id for new element
-		const arrLength = stateCopy.userData[propName].length;
-		const prevElement = stateCopy.userData[propName][arrLength - 2];
+		const arrLength = userDataCopy[propName].length;
+		const prevElement = userDataCopy[propName][arrLength - 2];
 		if (!prevElement) {
-			stateCopy.userData[propName][arrLength - 1].id = 1;
+			userDataCopy[propName][arrLength - 1].id = 1;
 		} else {
-			stateCopy.userData[propName][arrLength - 1].id = prevElement.id + 1;
+			userDataCopy[propName][arrLength - 1].id = prevElement.id + 1;
 		}
 
-		this.setState({
-			...stateCopy,
-		});
+		setUserData(userDataCopy);
 	}
 
-	deleteData(propName, id) {
-		const stateCopy = JSON.parse(JSON.stringify(this.state));
+	function deleteData(propName, id) {
+		const userDataCopy = JSON.parse(JSON.stringify(userData));
 
-		stateCopy.userData[propName] = stateCopy.userData[propName].filter(
+		userDataCopy[propName] = userDataCopy[propName].filter(
 			(el) => el.id !== id
 		);
 
-		this.setState({
-			...stateCopy,
-		});
+		setUserData(userDataCopy);
 	}
 
-	renderPDF() {
+	function renderPDF() {
 		// Set default app scale to improve PDF quality
-		this.OptionsRef.current.scaleApp(1);
+		optionsRef.current.scaleApp(1);
 
-		html2canvas(this.AppRef.current.children[1]).then((canvas) => {
-			let canvasHeight = this.cvRef.current.offsetHeight;
-			let canvasWidth = this.cvRef.current.offsetWidth;
+		html2canvas(appRef.current.children[1]).then((canvas) => {
+			let canvasHeight = cvRef.current.offsetHeight;
+			let canvasWidth = cvRef.current.offsetWidth;
 
 			let imgData = canvas.toDataURL('image/jpeg', 1);
 			let pdf = new jsPDF('p', 'pt', [canvasWidth, canvasHeight]);
@@ -134,36 +112,32 @@ class App extends Component {
 		});
 	}
 
-	render() {
-		const { userData } = this.state;
-
-		return (
-			<div className='App wrap' ref={this.AppRef}>
-				<Options
-					eraseData={this.eraseData}
-					renderDemo={this.renderDemo}
-					renderPDF={this.renderPDF}
-					AppRef={this.AppRef}
-					ref={this.OptionsRef}
+	return (
+		<div className='App wrap' ref={appRef}>
+			<Options
+				eraseData={eraseData}
+				renderDemo={renderDemo}
+				renderPDF={renderPDF}
+				AppRef={appRef}
+				ref={optionsRef}
+			/>
+			<div className='cv' ref={cvRef}>
+				<Photo ref={photoRef} />
+				<PersonalInfo
+					userData={userData}
+					updateData={updateData}
+					ref={personalInfoRef}
 				/>
-				<div className='cv' ref={this.cvRef}>
-					<Photo ref={this.PhotoRef} />
-					<PersonalInfo
-						userData={userData}
-						updateData={this.updateData}
-						ref={this.PersonalInfoRef}
-					/>
-					<Experience
-						deleteData={this.deleteData}
-						userData={userData}
-						updateData={this.updateData}
-						addData={this.addData}
-						ref={this.ExpRef}
-					/>
-				</div>
+				<Experience
+					deleteData={deleteData}
+					userData={userData}
+					updateData={updateData}
+					addData={addData}
+					ref={expRef}
+				/>
 			</div>
-		);
-	}
-}
+		</div>
+	);
+};
 
 export default App;
