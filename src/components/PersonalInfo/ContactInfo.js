@@ -1,19 +1,15 @@
-import React, { Component } from 'react';
+import React, { useRef } from 'react';
 import '../../styles/PersonalInfo/ContactInfo.scss';
 
-export default class ContactInfo extends Component {
-	constructor(props) {
-		super(props);
+const ContactInfo = (props) => {
+	const { userData, editMode, updateData } = props;
 
-		this.emailInputRef = React.createRef();
-		this.phoneInputRef = React.createRef();
-		this.streetInputRef = React.createRef();
-		this.cityInputRef = React.createRef();
-		this.countryInputRef = React.createRef();
-	}
+	const emailInputRef = useRef(null)
+	const phoneInputRef = useRef(null)
+	const streetInputRef = useRef(null)
+	const cityInputRef = useRef(null)
+	const countryInputRef = useRef(null)
 
-	render() {
-		const { userData, editMode, updateData } = this.props;
 
 		let emailDefaultValue;
 		if (userData.email !== '') {
@@ -61,9 +57,9 @@ export default class ContactInfo extends Component {
 					className='contact-input'
 					type='text'
 					placeholder='Email'
-					ref={this.emailInputRef}
+					ref={emailInputRef}
 					defaultValue={emailDefaultValue}
-					onChange={() => updateData('email', this.emailInputRef.current.value)}
+					onChange={() => updateData('email', emailInputRef.current.value)}
 				/>
 			);
 			phone = (
@@ -71,9 +67,9 @@ export default class ContactInfo extends Component {
 					className='contact-input'
 					type='text'
 					placeholder='Phone'
-					ref={this.phoneInputRef}
+					ref={phoneInputRef}
 					defaultValue={phoneDefaultValue}
-					onChange={() => updateData('phone', this.phoneInputRef.current.value)}
+					onChange={() => updateData('phone', phoneInputRef.current.value)}
 				/>
 			);
 			street = (
@@ -81,10 +77,10 @@ export default class ContactInfo extends Component {
 					className='contact-input'
 					type='text'
 					placeholder='Street'
-					ref={this.streetInputRef}
+					ref={streetInputRef}
 					defaultValue={streetDefaultValue}
 					onChange={() =>
-						updateData('street', this.streetInputRef.current.value)
+						updateData('street', streetInputRef.current.value)
 					}
 				/>
 			);
@@ -93,9 +89,9 @@ export default class ContactInfo extends Component {
 					className='contact-input'
 					type='text'
 					placeholder='City'
-					ref={this.cityInputRef}
+					ref={cityInputRef}
 					defaultValue={cityDefaultValue}
-					onChange={() => updateData('city', this.cityInputRef.current.value)}
+					onChange={() => updateData('city', cityInputRef.current.value)}
 				/>
 			);
 			country = (
@@ -103,10 +99,10 @@ export default class ContactInfo extends Component {
 					className='contact-input'
 					type='text'
 					placeholder='Country'
-					ref={this.countryInputRef}
+					ref={countryInputRef}
 					defaultValue={countryDefaultValue}
 					onChange={() =>
-						updateData('country', this.countryInputRef.current.value)
+						updateData('country', countryInputRef.current.value)
 					}
 				/>
 			);
@@ -154,5 +150,6 @@ export default class ContactInfo extends Component {
 				{country}
 			</div>
 		);
-	}
 }
+
+export default ContactInfo
