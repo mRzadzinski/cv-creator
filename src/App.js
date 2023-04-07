@@ -95,7 +95,7 @@ const App = () => {
 
 		setUserData(userDataCopy);
 	}
-
+	console.log(optionsRef.current)
 	function renderPDF() {
 		// Set default app scale to improve PDF quality
 		optionsRef.current.scaleApp(1);
@@ -118,7 +118,7 @@ const App = () => {
 				eraseData={eraseData}
 				renderDemo={renderDemo}
 				renderPDF={renderPDF}
-				AppRef={appRef}
+				appRef={appRef}
 				ref={optionsRef}
 			/>
 			<div className='cv' ref={cvRef}>
