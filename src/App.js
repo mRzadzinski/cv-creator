@@ -3,7 +3,7 @@ import obiWanInfo from './user-data/obi-wan-data';
 import dataBoilerplate from './user-data/data-boilerplate';
 import Experience from './components/Experience';
 import PersonalInfo from './components/PersonalInfo';
-import Options from './Options';
+import Options from './components/Options';
 import Photo from './components/Photo';
 import html2canvas from 'html2canvas';
 import { jsPDF } from 'jspdf';
@@ -95,7 +95,7 @@ const App = () => {
 
 		setUserData(userDataCopy);
 	}
-	console.log(optionsRef.current)
+
 	function renderPDF() {
 		// Set default app scale to improve PDF quality
 		optionsRef.current.scaleApp(1);

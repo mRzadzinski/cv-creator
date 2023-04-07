@@ -1,7 +1,7 @@
 import React, { forwardRef, useImperativeHandle } from 'react';
-import './styles/Options.scss';
-import './styles/options-bar/buttons.scss';
-import './styles/options-bar/icons.scss';
+import '../styles/Options.scss';
+import '../styles/options-bar/buttons.scss';
+import '../styles/options-bar/icons.scss';
 
 const Options = forwardRef((props, ref) => {
 	const { eraseData, renderDemo, renderPDF, appRef } = props;

@@ -1,94 +1,83 @@
-import React, { Component } from 'react';
+import React, {
+	useState,
+	useRef,
+	forwardRef,
+	useImperativeHandle,
+	useEffect,
+} from 'react';
 import obiWanAvatar from '../img/avatar-sw.png';
 import uploadImg from '../img/upload-img.svg';
 import '../styles/Photo.scss';
 
-export default class Photo extends Component {
-	constructor(props) {
-		super(props);
+const Photo = forwardRef((props, ref) => {
+	const [userPhoto, setUserPhoto] = useState(obiWanAvatar);
 
-		this.state = {
-			userPhoto: obiWanAvatar,
+	const inputRef = useRef(null);
+	const avatarRef = useRef(null);
+	const uploaderRef = useRef(null);
+
+	useImperativeHandle(ref, () => {
+		return {
+			displayDemo() {
+				setUserPhoto(obiWanAvatar);
+			},
+
+			removeUserPhoto() {
+				displayUploader();
+				setUserPhoto(null);
+			},
 		};
+	});
 
-		this.userPhotoStorage = null;
-		this.inputRef = React.createRef();
-		this.avatarRef = React.createRef();
-		this.uploaderRef = React.createRef();
+	useEffect(() => {
+		hideUploader();
+		// eslint-disable-next-line react-hooks/exhaustive-deps
+	}, [userPhoto]);
 
-		this.readFile = this.readFile.bind(this);
-		this.removeUserPhoto = this.removeUserPhoto.bind(this);
-		this.displayUploader = this.displayUploader.bind(this);
-		this.hideUploader = this.hideUploader.bind(this);
+	function displayUploader() {
+		avatarRef.current.classList.add('hidden');
+		uploaderRef.current.classList.remove('hidden');
 	}
 
-	displayUploader() {
-		this.avatarRef.current.classList.add('hidden');
-		this.uploaderRef.current.classList.remove('hidden');
-	}
-
-	hideUploader() {
-		if (this.state.userPhoto) {
-			this.avatarRef.current.classList.remove('hidden');
-			this.uploaderRef.current.classList.add('hidden');
+	function hideUploader() {
+		if (userPhoto) {
+			avatarRef.current.classList.remove('hidden');
+			uploaderRef.current.classList.add('hidden');
 		}
 	}
 
-	displayDemo() {
-		this.setState(
-			{
-				userPhoto: obiWanAvatar,
-			},
-			() => this.hideUploader()
-		);
-	}
-
-	removeUserPhoto() {
-		this.displayUploader();
-		this.setState({
-			userPhoto: null,
-		});
-	}
-
-	readFile(uploadedPhoto) {
+	function readFile(uploadedPhoto) {
 		const reader = new FileReader();
 
 		reader.readAsDataURL(uploadedPhoto);
 		reader.onload = () => {
-			this.setState(
-				{
-					userPhoto: reader.result,
-				},
-				() => this.hideUploader()
-			);
+			setUserPhoto(reader.result);
 		};
 		// Reset input to work on upload of the same photo
-		this.inputRef.current.value = null;
+		inputRef.current.value = null;
 	}
 
-	render() {
-		const { userPhoto } = this.state;
+	return (
+		<div
+			className='Photo'
+			onMouseEnter={() => displayUploader()}
+			onMouseLeave={() => hideUploader()}
+		>
+			<img id='avatar' src={userPhoto} alt='Avatar' ref={avatarRef} />
 
-		return (
-			<div
-				className='Photo'
-				onMouseEnter={() => this.displayUploader()}
-				onMouseLeave={() => this.hideUploader()}
-			>
-				<img id='avatar' src={userPhoto} alt='Avatar' ref={this.avatarRef} />
-
-				<div className='upload-photo hidden' ref={this.uploaderRef}>
-					<label className='custom-file-upload'>
-						<img src={uploadImg} alt='upload-img' id='upload-img' />
-						<input
-							onChange={() => this.readFile(this.inputRef.current.files[0])}
-							type='file'
-							ref={this.inputRef}
-						/>
-						<div className='upload-instruction'>PHOTO</div>
-					</label>
-				</div>
+			<div className='upload-photo hidden' ref={uploaderRef}>
+				<label className='custom-file-upload'>
+					<img src={uploadImg} alt='upload-img' id='upload-img' />
+					<input
+						onChange={() => readFile(inputRef.current.files[0])}
+						type='file'
+						ref={inputRef}
+					/>
+					<div className='upload-instruction'>PHOTO</div>
+				</label>
 			</div>
-		);
-	}
-}
+		</div>
+	);
+});
+
+export default Photo;
