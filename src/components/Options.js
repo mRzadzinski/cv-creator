@@ -8,10 +8,8 @@ const Options = forwardRef((props, ref) => {
 
 	useImperativeHandle(ref, () => {
 		return {
-			scaleApp(percentage) {
-				appRef.current.style.transform = `scale(${percentage})`;
-			}
-		}
+			scaleApp,
+		};
 	});
 
 	function scaleApp(percentage) {

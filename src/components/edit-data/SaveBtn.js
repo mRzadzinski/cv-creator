@@ -1,20 +1,16 @@
-import React, { Component } from 'react';
+import React from 'react';
 import '../../styles/edit-data/EditBtns.scss';
 
-export default class SaveBtn extends Component {
-	constructor(props) {
-		super(props);
-	}
+const SaveBtn = (props) => {
+	const { toggleEditMode } = props;
 
-	render() {
-		const { toggleEditMode } = this.props;
+	return (
+		<div className='SaveBtn' onClick={() => toggleEditMode()}>
+			<span className='material-symbols-outlined' id='save-sign' title='Save'>
+				done
+			</span>
+		</div>
+	);
+};
 
-		return (
-			<div className='SaveBtn' onClick={() => toggleEditMode()}>
-				<span className='material-symbols-outlined' id='save-sign' title='Save'>
-					done
-				</span>
-			</div>
-		);
-	}
-}
+export default SaveBtn;

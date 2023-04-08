@@ -1,26 +1,16 @@
-import React, { Component } from 'react';
+import React, { forwardRef } from 'react';
 import '../../styles/edit-data/EditBtns.scss';
 
-export default class EditBtn extends Component {
-	constructor(props) {
-		super(props);
+const EditBtn = forwardRef((props, ref) => {
+	const { toggleEditMode } = props;
 
-		this.editBtnRef = React.createRef();
-	}
+	return (
+		<div className='EditBtn' onClick={() => toggleEditMode()} ref={ref}>
+			<span className='material-symbols-outlined' id='edit-sign' title='Edit'>
+				edit
+			</span>
+		</div>
+	);
+});
 
-	render() {
-		const { toggleEditMode } = this.props;
-
-		return (
-			<div
-				className='EditBtn'
-				onClick={() => toggleEditMode()}
-				ref={this.editBtnRef}
-			>
-				<span className='material-symbols-outlined' id='edit-sign' title='Edit'>
-					edit
-				</span>
-			</div>
-		);
-	}
-}
+export default EditBtn;

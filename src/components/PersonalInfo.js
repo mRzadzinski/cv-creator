@@ -33,13 +33,13 @@ const PersonalInfo = forwardRef((props, ref) => {
 
 	function showEditBtn() {
 		if (!editMode) {
-			editBtnRef.current.editBtnRef.current.style.visibility = 'visible';
+			editBtnRef.current.style.visibility = 'visible';
 		}
 	}
 
 	function hideEditBtn() {
 		if (!editMode) {
-			editBtnRef.current.editBtnRef.current.style.visibility = 'hidden';
+			editBtnRef.current.style.visibility = 'hidden';
 		}
 	}
 
