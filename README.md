@@ -6,6 +6,8 @@
 
 Star Wars themed CV creator with demo data to play with.
 
+(Separate branch refactored from class to functional components)
+
 ## Features
 * Add / remove / modify personal info
 * Upload photo
@@ -23,7 +25,8 @@ Star Wars themed CV creator with demo data to play with.
 
 ## Skills practiced
 * React app architecture (my first react app)
-* Working with class components
+* Class components
+* Functional components and hooks
 * Usage of props and state
 * Dealing with unidirectional data flow
 * JSX syntax
